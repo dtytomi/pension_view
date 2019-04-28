@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PensionService {
 
-  private _jsonURL = '/assets/premium_items.json';
+  private _jsonURL = './assets/premium_items.json';
 
   constructor(private http: HttpClient) { }
 
