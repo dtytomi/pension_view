@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class PensionService {
 
-  private _jsonURL = './assets/premium_items.json';
+  private premium_jsonURL = './assets/premium_items.json';
+  private arm_jsonURL = './assets/arm_items.json';
 
   constructor(private http: HttpClient) { }
 
   getPremium(): Observable<any> {
-    return this.http.get(this._jsonURL);
+    return this.http.get(this.premium_jsonURL);
+  }
+
+  getArm(): Observable<any> {
+    return this.http.get(this.arm_jsonURL);
   }
 
 }
