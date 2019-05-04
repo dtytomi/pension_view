@@ -1,8 +1,10 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PensionService } from '../pension.service';
+import { forkJoin } from 'rxjs';
+
 
 export class Pension {
-  price: number;
+  unit_price: number;
   date: string;
   sn: number;
 }
@@ -12,7 +14,7 @@ export class Pension {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
 
   armPensions: Pension;
   premiumPensions: Pension;
@@ -27,46 +29,75 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getPensions(): void {
-    this.pensionService.getPremium()
-      .subscribe(pensions => {
-        this.premiumPensions = pensions;
-        for (let index = 0; index < 3; index++) {
-          this.premiumTempPensions.push(this.premiumPensions[index]);
-        }
-      });
-    this.pensionService.getArm()
-      .subscribe(pensions => {
-        this.armPensions = pensions;
-        for (let index = 0; index < 3; index++) {
-          this.armTempPensions.push(this.armPensions[index]);
-        }
-      });
-      
-  }
-
-  ngAfterViewInit() {
-    this.ranking();
+    forkJoin(
+      this.pensionService.getPremium(),
+      this.pensionService.getArm()
+    ).subscribe(([res1, res2]) => {
+      this.premiumPensions = res1;
+      this.armPensions = res2;
+      for (let index = 0; index < 3; index++) {
+        this.premiumTempPensions.push(this.premiumPensions[index]);
+        this.armTempPensions.push(this.armPensions[index]);
+      }
+      this.ranking();
+    });
+    
   }
 
   ranking() {
+  
+   
     for (const key in this.armTempPensions) {
-      let date1 = Date.parse(this.armTempPensions[key].date);
-      let date2 = Date.parse(this.premiumTempPensions[key].date);
 
+      let price1 = this.armTempPensions[key].unit_price;
+      let price2 = this.premiumTempPensions[key].unit_price; 
+      
+      let date1 = Date.parse(Date(this.armTempPensions[key].date));
+      let date2 = Date.parse(Date(this.premiumTempPensions[key].date));
+      
       if (date1 === date2) {
-        this.result.push(this.armTempPensions[key]);
-        this.result.push(this.premiumTempPensions[key]);
+        if (parseFloat(price1) ===  parseFloat(price2)) {
+          this.result.push(this.armTempPensions[key]);
+          this.result.push(this.premiumTempPensions[key]);
+        }
+        else if (parseFloat(price1) > parseFloat(price2)) {
+          this.result.push(this.armTempPensions[key]);
+          this.result.push(this.premiumTempPensions[key]);
+        }
+        else if (parseFloat(price2) > parseFloat(price1)) {
+          this.result.push(this.premiumTempPensions[key]);
+          this.result.push(this.armTempPensions[key]);
+        } 
       }
       else if (date2 < date1) {
-        this.result.push(this.armTempPensions[key]);
-        this.result.push(this.premiumTempPensions[key]);
+        if (parseFloat(price1) === parseFloat(price2)) {
+          this.result.push(this.armTempPensions[key]);
+          this.result.push(this.premiumTempPensions[key]);
+        }
+        else if (parseFloat(price1) > parseFloat(price2)) {
+          this.result.push(this.armTempPensions[key]);
+          this.result.push(this.premiumTempPensions[key]);
+        }
+        else if (parseFloat(price2) > parseFloat(price1)) {
+          this.result.push(this.premiumTempPensions[key]);
+          this.result.push(this.armTempPensions[key]);
+        } 
       }
       else if (date1 < date2) {
-        this.result.push(this.armTempPensions[key]);
-        this.result.push(this.premiumTempPensions[key]);
+        if (parseFloat(price1) === parseFloat(price2)) {
+          this.result.push(this.armTempPensions[key]);
+          this.result.push(this.premiumTempPensions[key]);
+        }
+        else if (parseFloat(price1) > parseFloat(price2)) {
+          this.result.push(this.armTempPensions[key]);
+          this.result.push(this.premiumTempPensions[key]);
+        }
+        else if (parseFloat(price2) > parseFloat(price1)) {
+          this.result.push(this.premiumTempPensions[key]);
+          this.result.push(this.armTempPensions[key]);
+        } 
       }
     }
-    console.log(this.result);
   }
 
 }

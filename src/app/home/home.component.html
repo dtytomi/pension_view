@@ -3,7 +3,7 @@
     <div class="navbar-brand">
       <h1>
         <a class="navbar-item">
-          <img src="../../assets/img/logo_l&w.png">
+          <img src="./../../assets/img/logo_l&w.png">
         </a>
       </h1>
       
@@ -36,8 +36,34 @@
       <article class="message">
         <div class="message-header">
           <!-- Make a header using the `name` property from the current season in the loop -->
+          <p>Ranking</p>
+        </div>
+        <div class="message-body">
+          <div class="board-item">
+            <table class="table is-bordered is-striped">
+              <thead>
+                <tr>
+                  <th>Fund Name</th>
+                  <th>Price</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pension of result | slice:0:10; index as i">
+                  <td>{{pension.provider}}</td>
+                  <td>{{pension.date}}</td>
+                  <td>₦{{pension.unit_price}}</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="column is-narrow">
+      <article class="message">
+        <div class="message-header">
+          <!-- Make a header using the `name` property from the current season in the loop -->
           <p>Premium pension</p>
-          <button class="delete" aria-label="delete"></button>
         </div>
         <div class="message-body">
           <div class="board-item">
@@ -65,7 +91,6 @@
         <div class="message-header">
           <!-- Make a header using the `name` property from the current season in the loop -->
           <p>Arm pension</p>
-          <button class="delete" aria-label="delete"></button>
         </div>
         <div class="message-body">
           <div class="board-item">
