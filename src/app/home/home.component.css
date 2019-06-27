@@ -1,10 +1,26 @@
-section .container {
-  margin-top: 20px;
+section.container {
+  margin-top: 20%;
+}
+
+@media only screen and (min-width: 768px) {
+
+  section.container {
+    margin-top: 5%;
+  }
 }
 
 /* Keep from sticking to sides */
 .cards-container {
   max-width: 95%;
+}
+
+.example-large-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
 }
 
 .board-item {
@@ -32,4 +48,9 @@ section .container {
 
 footer {
   margin-top: 2rem;
+}
+
+.hero .subtitle {
+  padding: 3rem 0;
+  line-height: 1.5;
 }

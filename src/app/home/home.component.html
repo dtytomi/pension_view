@@ -1,146 +1,424 @@
-<nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
-  <div class="container">
-    <div class="navbar-brand">
-      <h1>
-        <a class="navbar-item">
-          <img src="../../../assets/img/logo_l&w.png">
-        </a>
-      </h1>
+<section class="container cards-container">
 
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-        data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+    <mat-tab label="Fund Price List">
+      <div class="example-large-box">
+        <div class="columns is-centered is-multiline" id="sectioncontainer">
+          <div class="column">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Prices</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Provider</th>
+                        <th>Fund 1</th>
+                        <th>Fund 2</th>
+                        <th>Fund 3</th>
+                        <th>Fund 4</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of pensions; index as i">
+                        <td>{{pension.provider}}</td>
+                        <td>₦{{pension.fund1}}</td>
+                        <td>₦{{pension.fund2}}</td>
+                        <td>₦{{pension.fund3}}</td>
+                        <td>₦{{pension.fund4}}</td>
+                        <td>{{pension.fund_date}}</td>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <a class="bd-tw-button button is-link" href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-              data-text="Making life easy with python scrape" data-via="dtytomi" data-hashtags="#armpension #pension"
-              data-show-count="false">Tweet</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </p>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</nav>
-
-<div class="tabs is-toggle is-fullwidth">
-  <ul>
-    <li class="is-active">
-      <a>
-        <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
-        <span>Pictures</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-        <span>Music</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
-        <span>Videos</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-        <span>Documents</span>
-      </a>
-    </li>
-  </ul>
-</div>
-
-<section class="container cards-container" style="margin-top: 5%;">
-  <div class="columns is-centered is-multiline" id="sectioncontainer">
-    <div class="column is-narrow">
-      <article class="message">
-        <div class="message-header">
-          <!-- Make a header using the `name` property from the current season in the loop -->
-          <p>Ranking</p>
-        </div>
-        <div class="message-body">
-          <div class="board-item">
-            <table class="table is-bordered is-striped">
-              <thead>
-                <tr>
-                  <th>Fund Name</th>
-                  <th>Price</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let pension of result | slice:0:10; index as i">
-                  <td>{{pension.provider}}</td>
-                  <td>{{pension.date}}</td>
-                  <td>₦{{pension.unit_price}}</td>
-              </tbody>
-            </table>
+    </mat-tab>
+    <mat-tab label="Fund I">
+      <div class="example-large-box">
+        <div class="columns is-centered is-multiline" id="sectioncontainer">
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Ranking</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of result | slice:0:10; index as i">
+                        <td>{{pension.provider}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Premium pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension1 of premiumPensions | slice:0:10; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{pension1.date}}</td>
+                        <td>₦{{pension1.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Arm pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of armPensions | slice:0:10; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
-      </article>
-    </div>
-    <div class="column is-narrow">
-      <article class="message">
-        <div class="message-header">
-          <!-- Make a header using the `name` property from the current season in the loop -->
-          <p>Premium pension</p>
-        </div>
-        <div class="message-body">
-          <div class="board-item">
-            <table class="table is-bordered is-striped">
-              <thead>
-                <tr>
-                  <th>s/n</th>
-                  <th>Price</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let pension1 of premiumPensions | slice:0:10; index as i">
-                  <td>{{i+1}}</td>
-                  <td>{{pension1.date}}</td>
-                  <td>₦{{pension1.unit_price}}</td>
-              </tbody>
-            </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fund II">
+      <div class="example-large-box">
+        <div class="columns is-centered is-multiline" id="sectioncontainer">
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Ranking</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of result | slice:0:10; index as i">
+                        <td>{{pension.provider}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Premium pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension1 of premiumPensions | slice:0:10; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{pension1.date}}</td>
+                        <td>₦{{pension1.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Arm pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of armPensions | slice:0:10; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
-      </article>
-    </div>
-    <div class="column is-narrow">
-      <article class="message">
-        <div class="message-header">
-          <!-- Make a header using the `name` property from the current season in the loop -->
-          <p>Arm pension</p>
-        </div>
-        <div class="message-body">
-          <div class="board-item">
-            <table class="table is-bordered is-striped">
-              <thead>
-                <tr>
-                  <th>s/n</th>
-                  <th>Price</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let pension of armPensions | slice:0:10; index as i">
-                  <td>{{i + 1}}</td>
-                  <td>{{pension.date}}</td>
-                  <td>₦{{pension.unit_price}}</td>
-              </tbody>
-            </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fund III"> 
+      <div class="example-large-box">
+        <div class="columns is-centered is-multiline" id="sectioncontainer">
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Ranking</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of result | slice:0:10; index as i">
+                        <td>{{pension.provider}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Premium pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension1 of premiumPensions | slice:0:10; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{pension1.date}}</td>
+                        <td>₦{{pension1.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Arm pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of armPensions | slice:0:10; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
-      </article>
-    </div>
-  </div>
+      </div>
+    </mat-tab>    
+    <mat-tab label="Fund IV"> 
+      <div class="example-large-box">
+        <div class="columns is-centered is-multiline" id="sectioncontainer">
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Ranking</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of result | slice:0:10; index as i">
+                        <td>{{pension.provider}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Premium pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension1 of premiumPensions | slice:0:10; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{pension1.date}}</td>
+                        <td>₦{{pension1.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Arm pension</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>s/n</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of armPensions | slice:0:10; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{pension.date}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fund V"> 
+      <div class="example-large-box">
+        <div class="columns has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <h1 class="title">
+              Coming Soon
+            </h1>
+            <h2 class="subtitle">
+              $this is the best software platform for all your pension funds. We handle billions of dollars every year
+              for forward-thinking individuals around the world.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fund VI"> 
+      <div class="example-large-box">
+        <div class="columns has-text-centered">
+          <div class="column is-6 is-offset-3">
+            <h1 class="title">
+              Coming Soon
+            </h1>
+            <h2 class="subtitle">
+              $this is the best software platform for all your pension funds. We handle billions of dollars every year
+              for forward-thinking individuals around the world.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <!-- </div> -->
 </section>
