@@ -24,7 +24,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let pension of pensions; index as i">
+                      <tr *ngFor="let pension of pensions | values">
                         <td>{{pension.provider}}</td>
                         <td>₦{{pension.fund1}}</td>
                         <td>₦{{pension.fund2}}</td>
@@ -56,15 +56,17 @@
                     <thead>
                       <tr>
                         <th>Fund Name</th>
-                        <th>Price</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let pension of result | slice:0:10; index as i">
-                        <td>{{pension.provider}}</td>
-                        <td>{{pension.date}}</td>
+                        <td *ngIf="condition">{{pension.provider}}</td>
                         <td>₦{{pension.unit_price}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>{{pension.date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -89,15 +91,17 @@
                     <thead>
                       <tr>
                         <th>Fund Name</th>
-                        <th>Price</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let pension of result | slice:0:10; index as i">
                         <td>{{pension.provider}}</td>
-                        <td>{{pension.date}}</td>
                         <td>₦{{pension.unit_price}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>{{pension.date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -107,7 +111,7 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Fund III"> 
+    <mat-tab label="Fund III">
       <div class="example-large-box">
         <div class="columns is-centered is-multiline" id="sectioncontainer">
           <div class="column is-narrow">
@@ -122,15 +126,17 @@
                     <thead>
                       <tr>
                         <th>Fund Name</th>
-                        <th>Price</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let pension of result | slice:0:10; index as i">
                         <td>{{pension.provider}}</td>
-                        <td>{{pension.date}}</td>
                         <td>₦{{pension.unit_price}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>{{pension.date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -139,8 +145,8 @@
           </div>
         </div>
       </div>
-    </mat-tab>    
-    <mat-tab label="Fund IV"> 
+    </mat-tab>
+    <mat-tab label="Fund IV">
       <div class="example-large-box">
         <div class="columns is-centered is-multiline" id="sectioncontainer">
           <div class="column is-narrow">
@@ -155,15 +161,17 @@
                     <thead>
                       <tr>
                         <th>Fund Name</th>
-                        <th>Price</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let pension of result | slice:0:10; index as i">
                         <td>{{pension.provider}}</td>
-                        <td>{{pension.date}}</td>
                         <td>₦{{pension.unit_price}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>{{pension.date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -173,32 +181,72 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Fund V"> 
+    <mat-tab label="Fund V">
       <div class="example-large-box">
-        <div class="columns has-text-centered">
-          <div class="column is-6 is-offset-3">
-            <h1 class="title">
-              Coming Soon
-            </h1>
-            <h2 class="subtitle">
-              $this is the best software platform for all your pension funds. We handle billions of dollars every year
-              for forward-thinking individuals around the world.
-            </h2>
+        <div class="columns is-centered is-multiline" id="sectioncontainer">
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Ranking</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of result | slice:0:10; index as i">
+                        <td>{{pension.provider}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>{{pension.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Fund VI"> 
+    <mat-tab label="Fund VI">
       <div class="example-large-box">
-        <div class="columns has-text-centered">
-          <div class="column is-6 is-offset-3">
-            <h1 class="title">
-              Coming Soon
-            </h1>
-            <h2 class="subtitle">
-              $this is the best software platform for all your pension funds. We handle billions of dollars every year
-              for forward-thinking individuals around the world.
-            </h2>
+        <div class="columns is-centered is-multiline" id="sectioncontainer">
+          <div class="column is-narrow">
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p>Ranking</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pension of result | slice:0:10; index as i">
+                        <td>{{pension.provider}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>₦{{pension.unit_price}}</td>
+                        <td>{{pension.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>

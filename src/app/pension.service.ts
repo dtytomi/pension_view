@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,9 +9,9 @@ export class PensionService {
 
   constructor(private http: HttpClient) { }
 
-  configUrl = 'http://localhost:4000/api/pensions';
+  configUrl = 'https://sound-fastness-246414.appspot.com/api/pensions';
 
-  getPensions(): Observable<any> {
+  getPensions() {
     return this.http.get(this.configUrl);
   }
 

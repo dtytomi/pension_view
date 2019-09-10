@@ -12,6 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ValuesPipe } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 
 
@@ -19,7 +20,8 @@ import { NavComponent } from './nav/nav.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    ValuesPipe
   ],
   imports: [
     AppRoutingModule,

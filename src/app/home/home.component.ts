@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { PensionService } from '../pension.service';
 
 
@@ -18,6 +18,7 @@ export class Pension {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   pensions: Pension;
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
     this.pensionService.getPensions()
       .subscribe((data: Pension) => {
         this.pensions = data 
-        console.log(this.pensions)
+        console.log(data)
       })
           
   }
@@ -104,4 +105,11 @@ export class HomeComponent implements OnInit {
   //   }
   // }
 
+}
+
+@Pipe({ name: 'values',  pure: false })
+export class ValuesPipe implements PipeTransform {
+  transform(value: any, args: any[] = null): any {
+    return Object.keys(value).map(key => value[key]);
+  }
 }
