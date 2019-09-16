@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -7,14 +7,31 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PensionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    @Inject('apiUrl') private apiUrl: string
+    ) {  }
 
-  configUrl = 'http://localhost:5000/api/pensions';
+  getPensions() {
+    return this.http.get(`${this.apiUrl}pensions`);
+  }
 
-  getPensions(): Observable<any> {
-    return this.http.get(this.configUrl);
+  getFund1() {
+    return this.http.get(`${this.apiUrl}fund1`);
+  }
+
+  getFund2() {
+    return this.http.get(`${this.apiUrl}fund2`);
+  }
+
+  getFund3() {
+    return this.http.get(`${this.apiUrl}fund3`);
+  }
+
+  getFund4() {
+    return this.http.get(`${this.apiUrl}fund4`);
   }
   getAllFunds(){
     return this.http.get(this.configUrl+ '/allFunds').pipe(map(data => {

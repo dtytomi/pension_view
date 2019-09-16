@@ -14,6 +14,13 @@ export class Pension {
   sn: number;
 }
 
+export class Fund {
+  fund: string;
+  date: string;
+  provider: string
+  sn: number;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,24 +28,59 @@ export class Pension {
 })
 export class HomeComponent implements OnInit {
 
-  pensions: Pension;
-  premiumPensions: Pension;
-  armTempPensions: Pension[] = [];
-  premiumTempPensions: Pension[] = [];
-  result: Pension[] = [];
-
+  pensions: any = [];
+  fund1: any = []; fund2: any = []; fund3: any = []; fund4: any = [];
+  year: number;
   constructor(private pensionService :PensionService) { }
 
   ngOnInit() {
     this.getPensions();
-    this.getAllFunds();
+    this.getFund1();
+    this.getFund2();
+    this.getFund3();
+    this.getFund4();
+
+    let date = new Date(); 
+    this.year = date.getUTCFullYear(); 
+
   }
 
   getPensions(): void {
     this.pensionService.getPensions()
-      .subscribe(data => {
-        this.pensions = data.pensions[0]
-        console.log(this.pensions)
+      .subscribe((data: []) => {
+        this.pensions = data 
+      })
+          
+  }
+
+  getFund1(): void {
+    this.pensionService.getFund1()
+      .subscribe((data: any) => {
+        this.fund1 = data 
+      })
+          
+  }
+
+  getFund2(): void {
+    this.pensionService.getFund2()
+      .subscribe((data: Fund) => {
+        this.fund2 = data 
+      })
+          
+  }
+
+  getFund3(): void {
+    this.pensionService.getFund3()
+      .subscribe((data: any) => {
+        this.fund3 = data 
+      })
+          
+  }
+
+  getFund4(): void {
+    this.pensionService.getFund4()
+      .subscribe((data: any) => {
+        this.fund4 = data 
       })
           
   }
