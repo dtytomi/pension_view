@@ -48,7 +48,36 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Year To Date Return (%)</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>(%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let inception of inception1 | values">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.fund1_price}}</td>
+                        <td>₦{{inception.fund1}}</td>
+                        <td>{{inception.inception_fund1}}</td>
+                        <td>{{inception.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}} </p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -59,13 +88,15 @@
                         <th>Opening Price</th>
                         <th>Current Price</th>
                         <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let fund of fund1 | values">
-                        <td >{{fund.provider}}</td>
-                        <td>₦{{fund.unit_price}}</td>
+                        <td>{{fund.provider}}</td>
+                        <td>₦{{fund.fund1_price}}</td>
                         <td>₦{{fund.fund1}}</td>
+                        <td>{{fund.returns_fund1}}</td>
                         <td>{{fund.date}}</td>
                     </tbody>
                   </table>
@@ -83,7 +114,36 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Year To Date Return (%)</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>(%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let inception of inception2 | values">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.fund2_price}}</td>
+                        <td>₦{{inception.fund2}}</td>
+                        <td>{{inception.inception_fund2}}</td>
+                        <td>{{inception.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -94,13 +154,15 @@
                         <th>Opening Price</th>
                         <th>Current Price</th>
                         <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let fund of fund2 | values">
                         <td>{{fund.provider}}</td>
-                        <td>₦{{fund.unit_price}}</td>
+                        <td>₦{{fund.fund2_price}}</td>
                         <td>₦{{fund.fund2}}</td>
+                        <td>{{fund.returns_fund2}}</td>
                         <td>{{fund.date}}</td>
                     </tbody>
                   </table>
@@ -118,7 +180,36 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Year To Date Return (%)</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>(%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let inception of inception3 | values">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.fund3_price}}</td>
+                        <td>₦{{inception.fund3}}</td>
+                        <td>{{inception.inception_fund3}}</td>
+                        <td>{{inception.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -129,13 +220,15 @@
                         <th>Opening Price</th>
                         <th>Current Price</th>
                         <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let fund of fund3 | values">
                         <td>{{fund.provider}}</td>
-                        <td>₦{{fund.unit_price}}</td>
+                        <td>₦{{fund.fund3_price}}</td>
                         <td>₦{{fund.fund3}}</td>
+                        <td>{{fund.returns_fund3}}</td>
                         <td>{{fund.date}}</td>
                     </tbody>
                   </table>
@@ -153,7 +246,7 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Year To Date Return (%)</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -164,13 +257,44 @@
                         <th>Opening Price</th>
                         <th>Current Price</th>
                         <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let inception of inception4 | values">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.fund4_price}}</td>
+                        <td>₦{{inception.fund4}}</td>
+                        <td>{{inception.inception_fund4}}</td>
+                        <td>{{inception.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let fund of fund4 | values">
                         <td>{{fund.provider}}</td>
-                        <td>₦{{fund.unit_price}}</td>
+                        <td>₦{{fund.fund4_price}}</td>
                         <td>₦{{fund.fund4}}</td>
+                        <td>{{fund.returns_fund4}}</td>
                         <td>{{fund.date}}</td>
                     </tbody>
                   </table>
@@ -185,10 +309,39 @@
       <div class="example-large-box">
         <div class="columns is-centered is-multiline" id="sectioncontainer">
           <div class="column is-narrow">
+              <article class="message">
+                  <div class="message-header">
+                    <!-- Make a header using the `name` property from the current season in the loop -->
+                    <p class="has-text-centered">Return (%) Since Inception </p>
+                  </div>
+                  <div class="message-body">
+                    <div class="board-item">
+                      <table class="table is-bordered is-striped">
+                        <thead>
+                          <tr>
+                            <th>Fund Name</th>
+                            <th>Opening Price</th>
+                            <th>Current Price</th>
+                            <th>(%)</th>
+                            <th>Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </article>
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Year To Date Return (%)</p>
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -199,13 +352,15 @@
                         <th>Opening Price</th>
                         <th>Current Price</th>
                         <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
+                      <tr>
                         <td></td>
                         <td>₦</td>
                         <td>₦</td>
+                        <td></td>
                         <td></td>
                     </tbody>
                   </table>
@@ -223,7 +378,36 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Year To Date Return (%)</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>(%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -234,13 +418,15 @@
                         <th>Opening Price</th>
                         <th>Current Price</th>
                         <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
+                      <tr>
                         <td></td>
                         <td>₦</td>
                         <td>₦</td>
+                        <td></td>
                         <td></td>
                     </tbody>
                   </table>

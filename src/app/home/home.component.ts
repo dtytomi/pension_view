@@ -4,10 +4,10 @@ import { tap } from 'rxjs/operators';
 
 
 export class Pension {
-  fund1: string;
-  fund2: string;
-  fund3: string;
-  fund4: string;
+  fund1: number;
+  fund2: number;
+  fund3: number;
+  fund4: number;
   fund_date: string;
   date: string;
   provider: string
@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
 
   pensions: any = [];
   fund1: any = []; fund2: any = []; fund3: any = []; fund4: any = [];
+  inception1: any = [];
+  inception2: any = [];
+  inception3: any = [];
+  inception4: any = [];
   year: number;
   constructor(private pensionService :PensionService) { }
 
@@ -39,6 +43,10 @@ export class HomeComponent implements OnInit {
     this.getFund2();
     this.getFund3();
     this.getFund4();
+    this.getInception1();
+    this.getInception2();
+    this.getInception3();
+    this.getInception4();
 
     let date = new Date(); 
     this.year = date.getUTCFullYear(); 
@@ -54,7 +62,7 @@ export class HomeComponent implements OnInit {
   }
 
   getFund1(): void {
-    this.pensionService.getFund1()
+    this.pensionService.getReturns1()
       .subscribe((data: any) => {
         this.fund1 = data 
       })
@@ -62,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
 
   getFund2(): void {
-    this.pensionService.getFund2()
+    this.pensionService.getReturns2()
       .subscribe((data: Fund) => {
         this.fund2 = data 
       })
@@ -70,7 +78,7 @@ export class HomeComponent implements OnInit {
   }
 
   getFund3(): void {
-    this.pensionService.getFund3()
+    this.pensionService.getReturns3()
       .subscribe((data: any) => {
         this.fund3 = data 
       })
@@ -78,18 +86,45 @@ export class HomeComponent implements OnInit {
   }
 
   getFund4(): void {
-    this.pensionService.getFund4()
+    this.pensionService.getReturns4()
       .subscribe((data: any) => {
         this.fund4 = data 
       })
           
   }
-  getAllFunds() {
-    console.log('im here')
-    this.pensionService.getAllFunds().subscribe(data=>{
-      console.log(data)
-    })
+
+  getInception1(): void {
+    this.pensionService.getInception1()
+      .subscribe((data: any) => {
+        this.inception1 = data 
+      })
+          
   }
+
+  getInception2(): void {
+    this.pensionService.getInception2()
+      .subscribe((data: Fund) => {
+        this.inception2 = data 
+      })
+          
+  }
+
+  getInception3(): void {
+    this.pensionService.getInception3()
+      .subscribe((data: any) => {
+        this.inception3 = data 
+      })
+          
+  }
+
+  getInception4(): void {
+    this.pensionService.getInception4()
+      .subscribe((data: any) => {
+        this.inception4 = data 
+      })
+          
+  }
+
   // ranking() {
   
    

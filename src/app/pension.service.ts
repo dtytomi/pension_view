@@ -18,23 +18,40 @@ export class PensionService {
     return this.http.get(`${this.apiUrl}pensions`);
   }
 
-  getFund1() {
-    return this.http.get(`${this.apiUrl}fund1`);
+  getReturns1() {
+    return this.http.get(`${this.apiUrl}returns1`);
   }
 
-  getFund2() {
-    return this.http.get(`${this.apiUrl}fund2`);
+  getReturns2() {
+    return this.http.get(`${this.apiUrl}returns2`);
   }
 
-  getFund3() {
-    return this.http.get(`${this.apiUrl}fund3`);
+  getReturns3() {
+    return this.http.get(`${this.apiUrl}returns3`);
   }
 
-  getFund4() {
-    return this.http.get(`${this.apiUrl}fund4`);
+  getReturns4() {
+    return this.http.get(`${this.apiUrl}returns4`);
   }
+
+  getInception1() {
+    return this.http.get(`${this.apiUrl}inception1`);
+  }
+
+  getInception2() {
+    return this.http.get(`${this.apiUrl}inception2`);
+  }
+
+  getInception3() {
+    return this.http.get(`${this.apiUrl}inception3`);
+  }
+
+  getInception4() {
+    return this.http.get(`${this.apiUrl}inception4`);
+  }
+  
   getAllFunds(){
-    return this.http.get(this.configUrl+ '/allFunds').pipe(map(data => {
+    return this.http.get(this.apiUrl + '/allFunds').pipe(map(data => {
     return {fund1: data[0].map(fund=> {
       return {
           current_price: fund.fund1,
