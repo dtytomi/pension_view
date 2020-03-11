@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PensionService } from '../pension.service';
+import { tap } from 'rxjs/operators';
 
 
 export class Pension {
@@ -30,17 +31,23 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getPensions();
+    this.getAllFunds();
   }
 
   getPensions(): void {
     this.pensionService.getPensions()
-      .subscribe((data: Pension) => {
-        this.pensions = data 
+      .subscribe(data => {
+        this.pensions = data.pensions[0]
         console.log(this.pensions)
       })
           
   }
-
+  getAllFunds() {
+    console.log('im here')
+    this.pensionService.getAllFunds().subscribe(data=>{
+      console.log(data)
+    })
+  }
   // ranking() {
   
    
