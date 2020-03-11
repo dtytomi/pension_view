@@ -103,6 +103,33 @@
                 </div>
               </div>
             </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of results | values">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -164,6 +191,33 @@
                         <td>₦{{fund.fund2}}</td>
                         <td>{{fund.returns_fund2}}</td>
                         <td>{{fund.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of resultsii | values">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -235,6 +289,33 @@
                 </div>
               </div>
             </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of resultsiii | values">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -296,6 +377,33 @@
                         <td>₦{{fund.fund4}}</td>
                         <td>{{fund.returns_fund4}}</td>
                         <td>{{fund.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of resultsiv | values">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
                     </tbody>
                   </table>
                 </div>

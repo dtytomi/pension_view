@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PensionService } from '../pension.service';
-import { tap } from 'rxjs/operators';
+import { RESULTS } from '../models/fundI.ytd';
+import { RESULTSII } from '../models/fundII.ytd';
+import { RESULTSIII } from '../models/fundIII.ytd';
+import { RESULTSIV } from '../models/fundIV.ytd';
+
 
 
 export class Pension {
@@ -35,41 +39,49 @@ export class HomeComponent implements OnInit {
   inception3: any = [];
   inception4: any = [];
   year: number;
+  lastyear: number;
+  results = RESULTS;
+  resultsii = RESULTSII;
+  resultsiii = RESULTSIII;
+  resultsiv = RESULTSIV;
+  
   constructor(private pensionService :PensionService) { }
 
   ngOnInit() {
     this.getPensions();
-    this.getFund1();
-    this.getFund2();
-    this.getFund3();
-    this.getFund4();
-    this.getInception1();
-    this.getInception2();
-    this.getInception3();
-    this.getInception4();
+    // this.getReturns1();
+    // this.getReturns2();
+    // this.getReturns3();
+    // this.getReturn4();
+    // this.getInception1();
+    // this.getInception2();
+    // this.getInception3();
+    // this.getInception4();
 
     let date = new Date(); 
     this.year = date.getUTCFullYear(); 
+    this.lastyear = date.getUTCFullYear() - 1;
+
 
   }
 
   getPensions(): void {
     this.pensionService.getPensions()
-      .subscribe((data: []) => {
-        this.pensions = data 
+      .subscribe((data: any) => {
+        this.pensions = data.pensions
       })
           
   }
 
-  getFund1(): void {
+  getReturns1(): void {
     this.pensionService.getReturns1()
       .subscribe((data: any) => {
-        this.fund1 = data 
+        this.fund1 = data.pensions 
       })
           
   }
 
-  getFund2(): void {
+  getReturns2(): void {
     this.pensionService.getReturns2()
       .subscribe((data: Fund) => {
         this.fund2 = data 
@@ -77,7 +89,7 @@ export class HomeComponent implements OnInit {
           
   }
 
-  getFund3(): void {
+  getReturns3(): void {
     this.pensionService.getReturns3()
       .subscribe((data: any) => {
         this.fund3 = data 
@@ -85,7 +97,7 @@ export class HomeComponent implements OnInit {
           
   }
 
-  getFund4(): void {
+  getReturn4(): void {
     this.pensionService.getReturns4()
       .subscribe((data: any) => {
         this.fund4 = data 
