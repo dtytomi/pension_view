@@ -26,11 +26,11 @@
                     <tbody>
                       <tr *ngFor="let pension of pensions">
                         <td>{{pension.provider}}</td>
-                        <td>₦{{pension.fund1}}</td>
-                        <td>₦{{pension.fund2}}</td>
-                        <td>₦{{pension.fund3}}</td>
-                        <td>₦{{pension.fund4}}</td>
-                        <td>{{pension.fund_date}}</td>
+                        <td>{{pension.fund1 | currency: '₦'}}</td>
+                        <td>{{pension.fund2 | currency:'₦'}}</td>
+                        <td>{{pension.fund3 | currency:'₦'}}</td>
+                        <td>{{pension.fund4 | currency:'₦'}}</td>
+                        <td>{{pension.fund_date | date}}</td>
 
                     </tbody>
                   </table>
@@ -63,12 +63,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let inception of inception1 | values">
+                      <tr *ngFor="let inception of inception1 ">
                         <td>{{inception.provider}}</td>
-                        <td>₦{{inception.fund1_price}}</td>
-                        <td>₦{{inception.fund1}}</td>
-                        <td>{{inception.inception_fund1}}</td>
-                        <td>{{inception.date}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
+                        <td>{{inception.date | date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -92,12 +92,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let fund of fund1 | values">
+                      <tr *ngFor="let fund of fund1 ">
                         <td>{{fund.provider}}</td>
-                        <td>₦{{fund.fund1_price}}</td>
-                        <td>₦{{fund.fund1}}</td>
-                        <td>{{fund.returns_fund1}}</td>
-                        <td>{{fund.date}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns}}</td>
+                        <td>{{fund.date | date  }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -120,7 +120,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let result of results | values">
+                      <tr *ngFor="let result of results ">
                         <td>{{result.provider}}</td>
                         <td>₦{{result.yend}}</td>
                         <td>₦{{result.latest}}</td>
@@ -156,12 +156,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let inception of inception2 | values">
+                      <tr *ngFor="let inception of inception2 ">
                         <td>{{inception.provider}}</td>
-                        <td>₦{{inception.fund2_price}}</td>
-                        <td>₦{{inception.fund2}}</td>
-                        <td>{{inception.inception_fund2}}</td>
-                        <td>{{inception.date}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
+                        <td>{{inception.date | date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -185,12 +185,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let fund of fund2 | values">
+                      <tr *ngFor="let fund of fund2 ">
                         <td>{{fund.provider}}</td>
-                        <td>₦{{fund.fund2_price}}</td>
-                        <td>₦{{fund.fund2}}</td>
-                        <td>{{fund.returns_fund2}}</td>
-                        <td>{{fund.date}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns}}</td>
+                        <td>{{fund.date | date  }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -213,7 +213,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let result of resultsii | values">
+                      <tr *ngFor="let result of resultsii ">
                         <td>{{result.provider}}</td>
                         <td>₦{{result.yend}}</td>
                         <td>₦{{result.latest}}</td>
@@ -249,12 +249,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let inception of inception3 | values">
+                      <tr *ngFor="let inception of inception3 ">
                         <td>{{inception.provider}}</td>
-                        <td>₦{{inception.fund3_price}}</td>
-                        <td>₦{{inception.fund3}}</td>
-                        <td>{{inception.inception_fund3}}</td>
-                        <td>{{inception.date}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
+                        <td>{{inception.date | date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -278,12 +278,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let fund of fund3 | values">
+                      <tr *ngFor="let fund of fund3 ">
                         <td>{{fund.provider}}</td>
-                        <td>₦{{fund.fund3_price}}</td>
-                        <td>₦{{fund.fund3}}</td>
-                        <td>{{fund.returns_fund3}}</td>
-                        <td>{{fund.date}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns}}</td>
+                        <td>{{fund.date | date}}</td>
                     </tbody>
                   </table>
                 </div>
@@ -306,7 +306,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let result of resultsiii | values">
+                      <tr *ngFor="let result of resultsiii ">
                         <td>{{result.provider}}</td>
                         <td>₦{{result.yend}}</td>
                         <td>₦{{result.latest}}</td>
@@ -342,11 +342,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let inception of inception4 | values">
+                      <tr *ngFor="let inception of inception4 ">
                         <td>{{inception.provider}}</td>
-                        <td>₦{{inception.fund4_price}}</td>
-                        <td>₦{{inception.fund4}}</td>
-                        <td>{{inception.inception_fund4}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
                         <td>{{inception.date}}</td>
                     </tbody>
                   </table>
@@ -371,12 +371,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let fund of fund4 | values">
+                      <tr *ngFor="let fund of fund4 ">
                         <td>{{fund.provider}}</td>
-                        <td>₦{{fund.fund4_price}}</td>
-                        <td>₦{{fund.fund4}}</td>
-                        <td>{{fund.returns_fund4}}</td>
-                        <td>{{fund.date}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns| number:'1.5-5'}}</td>
+                        <td>{{fund.date | date  }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -399,7 +399,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let result of resultsiv | values">
+                      <tr *ngFor="let result of resultsiv ">
                         <td>{{result.provider}}</td>
                         <td>₦{{result.yend}}</td>
                         <td>₦{{result.latest}}</td>

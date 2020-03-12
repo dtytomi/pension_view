@@ -61,6 +61,8 @@ export class HomeComponent implements OnInit {
     let date = new Date(); 
     this.year = date.getUTCFullYear(); 
     this.lastyear = date.getUTCFullYear() - 1;
+    this.getAllFunds();
+    this.getAllInception();
 
 
   }
@@ -68,75 +70,95 @@ export class HomeComponent implements OnInit {
   getPensions(): void {
     this.pensionService.getPensions()
       .subscribe((data: any) => {
-        this.pensions = data.pensions
+        this.pensions = data.pensions[0]
+        console.log(this.pensions)
       })
           
   }
 
-  getReturns1(): void {
-    this.pensionService.getReturns1()
-      .subscribe((data: any) => {
-        this.fund1 = data.pensions 
-      })
-          
-  }
 
-  getReturns2(): void {
-    this.pensionService.getReturns2()
-      .subscribe((data: Fund) => {
-        this.fund2 = data 
-      })
+  // getReturns1(): void {
+  //   this.pensionService.getReturns1()
+  //     .subscribe((data: any) => {
+  //       this.fund1 = data.pensions 
+  //     })
           
-  }
+  // }
 
-  getReturns3(): void {
-    this.pensionService.getReturns3()
-      .subscribe((data: any) => {
-        this.fund3 = data 
-      })
+  // getReturns2(): void {
+  //   this.pensionService.getReturns2()
+  //     .subscribe((data: Fund) => {
+  //       this.fund2 = data 
+  //     })
           
-  }
+  // }
 
-  getReturn4(): void {
-    this.pensionService.getReturns4()
-      .subscribe((data: any) => {
-        this.fund4 = data 
-      })
+  // getReturns3(): void {
+  //   this.pensionService.getReturns3()
+  //     .subscribe((data: any) => {
+  //       this.fund3 = data 
+  //     })
           
-  }
+  // }
 
-  getInception1(): void {
-    this.pensionService.getInception1()
-      .subscribe((data: any) => {
-        this.inception1 = data 
-      })
+  // getReturn4(): void {
+  //   this.pensionService.getReturns4()
+  //     .subscribe((data: any) => {
+  //       this.fund4 = data 
+  //     })
           
-  }
+  // }
 
-  getInception2(): void {
-    this.pensionService.getInception2()
-      .subscribe((data: Fund) => {
-        this.inception2 = data 
-      })
+  // getInception1(): void {
+  //   this.pensionService.getInception1()
+  //     .subscribe((data: any) => {
+  //       this.inception1 = data 
+  //     })
           
-  }
+  // }
 
-  getInception3(): void {
-    this.pensionService.getInception3()
-      .subscribe((data: any) => {
-        this.inception3 = data 
-      })
+  // getInception2(): void {
+  //   this.pensionService.getInception2()
+  //     .subscribe((data: Fund) => {
+  //       this.inception2 = data 
+  //     })
           
-  }
+  // }
 
-  getInception4(): void {
-    this.pensionService.getInception4()
-      .subscribe((data: any) => {
-        this.inception4 = data 
-      })
+  // getInception3(): void {
+  //   this.pensionService.getInception3()
+  //     .subscribe((data: any) => {
+  //       this.inception3 = data 
+  //     })
           
-  }
+  // }
 
+  // getInception4(): void {
+  //   this.pensionService.getInception4()
+  //     .subscribe((data: any) => {
+  //       this.inception4 = data 
+  //     })
+          
+  // }
+  getAllFunds() {
+    this.pensionService.getAllFunds().subscribe(data=>{
+      this.fund1 = data.fund1;
+      console.log(this.fund1)
+      this.fund2 = data.fund2;
+      this.fund3 = data.fund3;
+      this.fund4 = data.fund4;
+    })
+  }
+  getAllInception() {
+    console.log()
+    this.pensionService.getAllInceptions()
+    .subscribe(data=>{
+      this.inception1 = data.inception1;
+      this.inception2 = data.inception2;
+      this.inception3 = data.inception3;
+      this.inception4 = data.inception4;
+    })
+  }
   // ranking() {
   
    
