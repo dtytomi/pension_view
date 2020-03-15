@@ -1,13 +1,25 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { PensionService } from '../pension.service';
+import { RESULTS } from '../models/fundI.ytd';
+import { RESULTSII } from '../models/fundII.ytd';
+import { RESULTSIII } from '../models/fundIII.ytd';
+import { RESULTSIV } from '../models/fundIV.ytd';
+
 
 
 export class Pension {
-  fund1: string;
-  fund2: string;
-  fund3: string;
-  fund4: string;
+  fund1: number;
+  fund2: number;
+  fund3: number;
+  fund4: number;
   fund_date: string;
+  date: string;
+  provider: string
+  sn: number;
+}
+
+export class Fund {
+  fund: string;
   date: string;
   provider: string
   sn: number;
@@ -21,16 +33,39 @@ export class Pension {
 
 export class HomeComponent implements OnInit {
 
-  pensions: Pension;
-  premiumPensions: Pension;
-  armTempPensions: Pension[] = [];
-  premiumTempPensions: Pension[] = [];
-  result: Pension[] = [];
-
+  pensions: any = [];
+  fund1: any = []; fund2: any = []; fund3: any = []; fund4: any = [];
+  inception1: any = [];
+  inception2: any = [];
+  inception3: any = [];
+  inception4: any = [];
+  year: number;
+  lastyear: number;
+  results = RESULTS;
+  resultsii = RESULTSII;
+  resultsiii = RESULTSIII;
+  resultsiv = RESULTSIV;
+  
   constructor(private pensionService :PensionService) { }
 
   ngOnInit() {
     this.getPensions();
+    // this.getReturns1();
+    // this.getReturns2();
+    // this.getReturns3();
+    // this.getReturn4();
+    // this.getInception1();
+    // this.getInception2();
+    // this.getInception3();
+    // this.getInception4();
+
+    let date = new Date(); 
+    this.year = date.getUTCFullYear(); 
+    this.lastyear = date.getUTCFullYear() - 1;
+    this.getAllFunds();
+    this.getAllInception();
+
+
   }
 
   getPensions(): void {
@@ -42,6 +77,90 @@ export class HomeComponent implements OnInit {
           
   }
 
+
+  // getReturns1(): void {
+  //   this.pensionService.getReturns1()
+  //     .subscribe((data: any) => {
+  //       this.fund1 = data.pensions 
+  //     })
+          
+  // }
+
+  // getReturns2(): void {
+  //   this.pensionService.getReturns2()
+  //     .subscribe((data: Fund) => {
+  //       this.fund2 = data 
+  //     })
+          
+  // }
+
+  // getReturns3(): void {
+  //   this.pensionService.getReturns3()
+  //     .subscribe((data: any) => {
+  //       this.fund3 = data 
+  //     })
+          
+  // }
+
+  // getReturn4(): void {
+  //   this.pensionService.getReturns4()
+  //     .subscribe((data: any) => {
+  //       this.fund4 = data 
+  //     })
+          
+  // }
+
+  // getInception1(): void {
+  //   this.pensionService.getInception1()
+  //     .subscribe((data: any) => {
+  //       this.inception1 = data 
+  //     })
+          
+  // }
+
+  // getInception2(): void {
+  //   this.pensionService.getInception2()
+  //     .subscribe((data: Fund) => {
+  //       this.inception2 = data 
+  //     })
+          
+  // }
+
+  // getInception3(): void {
+  //   this.pensionService.getInception3()
+  //     .subscribe((data: any) => {
+  //       this.inception3 = data 
+  //     })
+          
+  // }
+
+  // getInception4(): void {
+  //   this.pensionService.getInception4()
+  //     .subscribe((data: any) => {
+  //       this.inception4 = data 
+  //     })
+          
+  // }
+  getAllFunds() {
+    this.pensionService.getAllFunds().subscribe(data=>{
+      this.fund1 = data.fund1;
+      console.log(this.fund1)
+      this.fund2 = data.fund2;
+      this.fund3 = data.fund3;
+      this.fund4 = data.fund4;
+    })
+  }
+  
+  getAllInception() {
+    console.log()
+    this.pensionService.getAllInceptions()
+    .subscribe(data=>{
+      this.inception1 = data.inception1;
+      this.inception2 = data.inception2;
+      this.inception3 = data.inception3;
+      this.inception4 = data.inception4;
+    })
+  }
   // ranking() {
   
    

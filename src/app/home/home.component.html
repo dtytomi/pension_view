@@ -26,11 +26,11 @@
                     <tbody>
                       <tr *ngFor="let pension of pensions | values">
                         <td>{{pension.provider}}</td>
-                        <td>₦{{pension.fund1}}</td>
-                        <td>₦{{pension.fund2}}</td>
-                        <td>₦{{pension.fund3}}</td>
-                        <td>₦{{pension.fund4}}</td>
-                        <td>{{pension.fund_date}}</td>
+                        <td>{{pension.fund1 | currency: '₦'}}</td>
+                        <td>{{pension.fund2 | currency:'₦'}}</td>
+                        <td>{{pension.fund3 | currency:'₦'}}</td>
+                        <td>{{pension.fund4 | currency:'₦'}}</td>
+                        <td>{{pension.fund_date | date}}</td>
 
                     </tbody>
                   </table>
@@ -48,7 +48,7 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Ranking</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -58,15 +58,73 @@
                         <th>Fund Name</th>
                         <th>Opening Price</th>
                         <th>Current Price</th>
+                        <th>(%)</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let pension of result | slice:0:10; index as i">
-                        <td *ngIf="condition">{{pension.provider}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>{{pension.date}}</td>
+                      <tr *ngFor="let inception of inception1 ">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
+                        <td>{{inception.date | date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}} </p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let fund of fund1">
+                        <td>{{fund.provider}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns}}</td>
+                        <td>{{fund.date | date  }}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of results">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -83,7 +141,7 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Ranking</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -93,15 +151,73 @@
                         <th>Fund Name</th>
                         <th>Opening Price</th>
                         <th>Current Price</th>
+                        <th>(%)</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let pension of result | slice:0:10; index as i">
-                        <td>{{pension.provider}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>{{pension.date}}</td>
+                      <tr *ngFor="let inception of inception2 ">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
+                        <td>{{inception.date | date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let fund of fund2">
+                        <td>{{fund.provider}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns}}</td>
+                        <td>{{fund.date | date  }}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of resultsii">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -118,7 +234,7 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Ranking</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -128,15 +244,73 @@
                         <th>Fund Name</th>
                         <th>Opening Price</th>
                         <th>Current Price</th>
+                        <th>(%)</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let pension of result | slice:0:10; index as i">
-                        <td>{{pension.provider}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>{{pension.date}}</td>
+                      <tr *ngFor="let inception of inception3 ">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
+                        <td>{{inception.date | date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let fund of fund3 ">
+                        <td>{{fund.provider}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns}}</td>
+                        <td>{{fund.date | date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of resultsiii ">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -153,7 +327,7 @@
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Ranking</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -163,15 +337,73 @@
                         <th>Fund Name</th>
                         <th>Opening Price</th>
                         <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let pension of result | slice:0:10; index as i">
-                        <td>{{pension.provider}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>{{pension.date}}</td>
+                      <tr *ngFor="let inception of inception4 ">
+                        <td>{{inception.provider}}</td>
+                        <td>₦{{inception.opening_price}}</td>
+                        <td>₦{{inception.current_price}}</td>
+                        <td>{{inception.returns}}</td>
+                        <td>{{inception.date}}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let fund of fund4 ">
+                        <td>{{fund.provider}}</td>
+                        <td>₦{{fund.opening_price}}</td>
+                        <td>₦{{fund.current_price}}</td>
+                        <td>{{fund.returns| number:'1.5-5'}}</td>
+                        <td>{{fund.date | date  }}</td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Last Price</th>
+                        <th>(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of resultsiv ">
+                        <td>{{result.provider}}</td>
+                        <td>₦{{result.yend}}</td>
+                        <td>₦{{result.latest}}</td>
+                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
                     </tbody>
                   </table>
                 </div>
@@ -181,14 +413,43 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Fund V">
+    <mat-tab label="Fund V"> 
       <div class="example-large-box">
         <div class="columns is-centered is-multiline" id="sectioncontainer">
           <div class="column is-narrow">
+              <article class="message">
+                  <div class="message-header">
+                    <!-- Make a header using the `name` property from the current season in the loop -->
+                    <p class="has-text-centered">Return (%) Since Inception </p>
+                  </div>
+                  <div class="message-body">
+                    <div class="board-item">
+                      <table class="table is-bordered is-striped">
+                        <thead>
+                          <tr>
+                            <th>Fund Name</th>
+                            <th>Opening Price</th>
+                            <th>Current Price</th>
+                            <th>(%)</th>
+                            <th>Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </article>
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Ranking</p>
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -198,15 +459,17 @@
                         <th>Fund Name</th>
                         <th>Opening Price</th>
                         <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let pension of result | slice:0:10; index as i">
-                        <td>{{pension.provider}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>{{pension.date}}</td>
+                      <tr>
+                        <td></td>
+                        <td>₦</td>
+                        <td>₦</td>
+                        <td></td>
+                        <td></td>
                     </tbody>
                   </table>
                 </div>
@@ -216,14 +479,14 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Fund VI">
+    <mat-tab label="Fund VI"> 
       <div class="example-large-box">
         <div class="columns is-centered is-multiline" id="sectioncontainer">
           <div class="column is-narrow">
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
-                <p>Ranking</p>
+                <p class="has-text-centered">Return (%) Since Inception </p>
               </div>
               <div class="message-body">
                 <div class="board-item">
@@ -233,15 +496,46 @@
                         <th>Fund Name</th>
                         <th>Opening Price</th>
                         <th>Current Price</th>
+                        <th>(%)</th>
                         <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let pension of result | slice:0:10; index as i">
-                        <td>{{pension.provider}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>₦{{pension.unit_price}}</td>
-                        <td>{{pension.date}}</td>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>YTD {{year}} (%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td>₦</td>
+                        <td>₦</td>
+                        <td></td>
+                        <td></td>
                     </tbody>
                   </table>
                 </div>

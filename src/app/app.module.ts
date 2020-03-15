@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ValuesPipe } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+import { environment } from './../environments/environment';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { NavComponent } from './nav/nav.component';
   exports: [
     MatTabsModule, MatDividerModule, MatSliderModule, MatSelectModule, MatRadioModule, MatNativeDateModule, MatDatepickerModule, MatSnackBarModule, MatIconModule, MatDialogModule, MatProgressSpinnerModule, MatButtonModule, MatSortModule, MatCheckboxModule, MatToolbarModule, MatCardModule, MatTableModule, MatTabsModule, MatFormFieldModule, MatProgressSpinnerModule, MatInputModule, MatPaginatorModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'apiUrl', useValue: environment.API_URL}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
