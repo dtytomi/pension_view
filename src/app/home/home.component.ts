@@ -50,28 +50,19 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getPensions();
-    // this.getReturns1();
-    // this.getReturns2();
-    // this.getReturns3();
-    // this.getReturn4();
-    // this.getInception1();
-    // this.getInception2();
-    // this.getInception3();
-    // this.getInception4();
+    this.getAllFunds();
+    this.getAllInception();
 
     let date = new Date(); 
     this.year = date.getUTCFullYear(); 
     this.lastyear = date.getUTCFullYear() - 1;
-    this.getAllFunds();
-    this.getAllInception();
-
-
+    
   }
 
   getPensions(): void {
     this.pensionService.getPensions()
-      .subscribe((data: Pension) => {
-        this.pensions = data 
+      .subscribe((data: any) => {
+        this.pensions = data.pensions[0]
         console.log(data)
       })
           

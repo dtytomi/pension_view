@@ -19,7 +19,7 @@ export class PensionService {
   }
 
   getAllFunds() {
-    return this.http.get(`${this.apiUrl}pensions/allFunds`).pipe(map(data => {
+    return this.http.get(`${this.apiUrl}returns/allFunds`).pipe(map(data => {
       console.log(data)
       return {
         fund1: data[0].map(fund => {
