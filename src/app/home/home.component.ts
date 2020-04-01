@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   inception4: any = [];
   year: number;
   lastyear: number;
+
   results = RESULTS;
   resultsii = RESULTSII;
   resultsiii = RESULTSIII;
@@ -49,9 +50,16 @@ export class HomeComponent implements OnInit {
   constructor(private pensionService :PensionService) { }
 
   ngOnInit() {
+
     this.getPensions();
-    this.getAllFunds();
-    this.getAllInception();
+    this.getFund1();
+    this.getFund2();
+    this.getFund3();
+    this.getFund4();
+    this.getInception1();
+    this.getInception2();
+    this.getInception3();
+    this.getInception4();
 
     let date = new Date(); 
     this.year = date.getUTCFullYear(); 
@@ -62,96 +70,75 @@ export class HomeComponent implements OnInit {
   getPensions(): void {
     this.pensionService.getPensions()
       .subscribe((data: any) => {
-        this.pensions = data.pensions[0]
-        console.log(data)
+        this.pensions = data.pensions
+      });
+  }
+
+   getFund1(): void {
+    this.pensionService.getReturns1()
+      .subscribe((data: any) => {
+        this.fund1 = data.result 
+      })
+          
+  }
+
+  getFund2(): void {
+    this.pensionService.getReturns2()
+      .subscribe((data: any) => {
+        this.fund2 = data.result
+      })
+          
+  }
+
+  getFund3(): void {
+    this.pensionService.getReturns3()
+      .subscribe((data: any) => {
+        this.fund3 = data.result 
+      })
+          
+  }
+
+  getFund4(): void {
+    this.pensionService.getReturns4()
+      .subscribe((data: any) => {
+        this.fund4 = data.result 
+      })
+          
+  }
+
+  getInception1(): void {
+    this.pensionService.getInception1()
+      .subscribe((data: any) => {
+        this.inception1 = data.result 
+      })
+          
+  }
+
+  getInception2(): void {
+    this.pensionService.getInception2()
+      .subscribe((data: any) => {
+        this.inception2 = data.result 
+      })
+          
+  }
+
+  getInception3(): void {
+    this.pensionService.getInception3()
+      .subscribe((data: any) => {
+        this.inception3 = data.result 
+      })
+          
+  }
+
+  getInception4(): void {
+    this.pensionService.getInception4()
+      .subscribe((data: any) => {
+        this.inception4 = data.result 
       })
           
   }
 
 
-  // getReturns1(): void {
-  //   this.pensionService.getReturns1()
-  //     .subscribe((data: any) => {
-  //       this.fund1 = data.pensions 
-  //     })
-          
-  // }
-
-  // getReturns2(): void {
-  //   this.pensionService.getReturns2()
-  //     .subscribe((data: Fund) => {
-  //       this.fund2 = data 
-  //     })
-          
-  // }
-
-  // getReturns3(): void {
-  //   this.pensionService.getReturns3()
-  //     .subscribe((data: any) => {
-  //       this.fund3 = data 
-  //     })
-          
-  // }
-
-  // getReturn4(): void {
-  //   this.pensionService.getReturns4()
-  //     .subscribe((data: any) => {
-  //       this.fund4 = data 
-  //     })
-          
-  // }
-
-  // getInception1(): void {
-  //   this.pensionService.getInception1()
-  //     .subscribe((data: any) => {
-  //       this.inception1 = data 
-  //     })
-          
-  // }
-
-  // getInception2(): void {
-  //   this.pensionService.getInception2()
-  //     .subscribe((data: Fund) => {
-  //       this.inception2 = data 
-  //     })
-          
-  // }
-
-  // getInception3(): void {
-  //   this.pensionService.getInception3()
-  //     .subscribe((data: any) => {
-  //       this.inception3 = data 
-  //     })
-          
-  // }
-
-  // getInception4(): void {
-  //   this.pensionService.getInception4()
-  //     .subscribe((data: any) => {
-  //       this.inception4 = data 
-  //     })
-          
-  // }
-  getAllFunds() {
-    this.pensionService.getAllFunds().subscribe(data=>{
-      this.fund1 = data.fund1;
-      console.log(this.fund1)
-      this.fund2 = data.fund2;
-      this.fund3 = data.fund3;
-      this.fund4 = data.fund4;
-    })
-  }
-  
-  getAllInception() {
-    console.log()
-    this.pensionService.getAllInceptions()
-    .subscribe(data=>{
-      this.inception1 = data.inception1;
-      this.inception2 = data.inception2;
-      this.inception3 = data.inception3;
-      this.inception4 = data.inception4;
-    })
-  }
   // ranking() {
   
    
