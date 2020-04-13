@@ -125,6 +125,7 @@ export class HomeComponent implements OnInit {
   getFund2(): void {
     this.pensionService.getReturns2()
       .subscribe((data: any) => {
+        console.log(data.result)
         this.fund2 = data.result
       })
           
