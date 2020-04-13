@@ -1,9 +1,11 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { PensionService } from '../pension.service';
 import { RESULTS } from '../models/fundI.ytd';
 import { RESULTSII } from '../models/fundII.ytd';
 import { RESULTSIII } from '../models/fundIII.ytd';
 import { RESULTSIV } from '../models/fundIV.ytd';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 
 
 
@@ -79,6 +81,7 @@ export class HomeComponent implements OnInit {
     {displayedColumns: 'Date',value:'fund_date'},]
     incDate = [
       {displayedColumns: 'Date',value:'date'},]
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
   constructor(private pensionService :PensionService) { }
   
   ngOnInit() {
@@ -109,7 +112,7 @@ export class HomeComponent implements OnInit {
   getPensions(): void {
     this.pensionService.getPensions()
       .subscribe((data: any) => {
-        this.pensions = data.pensions
+        this.pensions = new MatTableDataSource(data.pensions)
         console.log(this.pensions)
       });
   }
@@ -117,7 +120,7 @@ export class HomeComponent implements OnInit {
    getFund1(): void {
     this.pensionService.getReturns1()
       .subscribe((data: any) => {
-        this.fund1 = data.result 
+        this.fund1 = new MatTableDataSource(data.result) 
       })
           
   }
@@ -125,8 +128,8 @@ export class HomeComponent implements OnInit {
   getFund2(): void {
     this.pensionService.getReturns2()
       .subscribe((data: any) => {
-        console.log(data.result)
-        this.fund2 = data.result
+        // console.log(data.result)
+        this.fund2 = new MatTableDataSource(data.result)
       })
           
   }
@@ -134,7 +137,7 @@ export class HomeComponent implements OnInit {
   getFund3(): void {
     this.pensionService.getReturns3()
       .subscribe((data: any) => {
-        this.fund3 = data.result 
+        this.fund3 = new MatTableDataSource(data.result) 
       })
           
   }
@@ -142,7 +145,7 @@ export class HomeComponent implements OnInit {
   getFund4(): void {
     this.pensionService.getReturns4()
       .subscribe((data: any) => {
-        this.fund4 = data.result 
+        this.fund4 = new MatTableDataSource(data.result) 
       })
           
   }
@@ -150,7 +153,7 @@ export class HomeComponent implements OnInit {
   getInception1(): void {
     this.pensionService.getInception1()
       .subscribe((data: any) => {
-        this.inception1 = data.result 
+        this.inception1 = new MatTableDataSource(data.result) 
         // this.dataSource = this.inception1
       })
           
@@ -159,7 +162,7 @@ export class HomeComponent implements OnInit {
   getInception2(): void {
     this.pensionService.getInception2()
       .subscribe((data: any) => {
-        this.inception2 = data.result 
+        this.inception2 = new MatTableDataSource(data.result) 
       })
           
   }
@@ -167,7 +170,7 @@ export class HomeComponent implements OnInit {
   getInception3(): void {
     this.pensionService.getInception3()
       .subscribe((data: any) => {
-        this.inception3 = data.result 
+        this.inception3 = new MatTableDataSource(data.result) 
       })
           
   }
@@ -175,7 +178,7 @@ export class HomeComponent implements OnInit {
   getInception4(): void {
     this.pensionService.getInception4()
       .subscribe((data: any) => {
-        this.inception4 = data.result 
+        this.inception4 = new MatTableDataSource(data.result) 
       })
           
   }

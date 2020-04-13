@@ -2,10 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; 
-import { MatNativeDateModule, MatSnackBarModule, MatIconModule, MatDialogModule, 
-  MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, 
-  MatTabsModule, MatCheckboxModule, MatToolbarModule, MatCard, MatCardModule, 
-  MatFormField, MatFormFieldModule, MatProgressSpinnerModule, MatInputModule } from '@angular/material';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSortModule} from '@angular/material/sort';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -40,7 +51,6 @@ import { TableComponent } from './table/table.component';
     MatSliderModule, 
     MatSelectModule, 
     MatRadioModule, 
-    MatNativeDateModule, 
     MatDatepickerModule, 
     MatSnackBarModule,
     MomentModule.forRoot({
@@ -59,7 +69,7 @@ import { TableComponent } from './table/table.component';
   ],
   exports: [
     MatTabsModule, MatDividerModule, MatSliderModule, 
-    MatSelectModule, MatRadioModule, MatNativeDateModule, 
+    MatSelectModule, MatRadioModule,
     MatDatepickerModule, MatSnackBarModule, MatIconModule, 
     MatDialogModule, MatProgressSpinnerModule, MatButtonModule, 
     MatSortModule, MatCheckboxModule, MatToolbarModule, MatCardModule, 
