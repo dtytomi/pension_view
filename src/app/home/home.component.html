@@ -12,28 +12,7 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Provider</th>
-                        <th>Fund 1</th>
-                        <th>Fund 2</th>
-                        <th>Fund 3</th>
-                        <th>Fund 4</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let pension of pensions">
-                        <td>{{pension.provider}}</td>
-                        <td>{{pension.fund1 | currency: '₦'}}</td>
-                        <td>{{pension.fund2 | currency:'₦'}}</td>
-                        <td>{{pension.fund3 | currency:'₦'}}</td>
-                        <td>{{pension.fund4 | currency:'₦'}}</td>
-                        <td>{{pension.fund_date | amDateFormat:'LL'}}</td>
-
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="pensions" [provider]="provider" [price]="price" [date]="date"></app-table>
                 </div>
               </div>
             </article>
@@ -52,25 +31,7 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>(%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let inception of inception1 ">
-                        <td>{{inception.provider}}</td>
-                        <td>{{inception.fund1_price | currency: '₦'}}</td>
-                        <td>{{inception.fund1 | currency: '₦'}}</td>
-                        <td>{{inception.inception_fund1 | number:'1.1-2'}} %</td>
-                        <td>{{inception.date | amDateFormat:'LL'}}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="inception1" [provider]="incProvider" [price]="incPrice1" [display]="incDisplay1" [date]="incDate"></app-table>
                 </div>
               </div>
             </article>
@@ -81,25 +42,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>YTD {{year}} (%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let fund of fund1">
-                        <td>{{fund.provider}}</td>
-                        <td>{{fund.fund1_price | currency: '₦'}}</td>
-                        <td>{{fund.fund1 | currency: '₦'}} </td>
-                        <td>{{fund.returns_fund1 | number:'1.1-2'}} %</td>
-                        <td>{{fund.date | amDateFormat:'LL' }}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="fund1" [provider]="incProvider" [price]="incPrice1" [display]="retDisplay1" [date]="incDate"></app-table>
+
                 </div>
               </div>
             </article>
@@ -110,23 +54,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Last Price</th>
-                        <th>(%)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let result of results">
-                        <td>{{result.provider}}</td>
-                        <td>{{result.yend | currency: '₦'}}</td>
-                        <td>{{result.latest | currency: '₦'}}</td>
-                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="results" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+
                 </div>
               </div>
             </article>
@@ -145,25 +74,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>(%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let inception of inception2 ">
-                        <td>{{inception.provider}}</td>
-                        <td>{{inception.fund2_price | currency: '₦'}}</td>
-                        <td>{{inception.fund2 | currency: '₦'}}</td>
-                        <td>{{inception.inception_fund2 | number:'1.1-2'}} %</td>
-                        <td>{{inception.date | amDateFormat:'LL'}}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="inception2" [provider]="incProvider" [price]="incPrice2" [display]="incDisplay2" [date]="incDate"></app-table>
+
                 </div>
               </div>
             </article>
@@ -174,25 +86,9 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>YTD {{year}} (%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let fund of fund2">
-                        <td>{{fund.provider}}</td>
-                        <td>{{fund.fund2_price | currency: '₦'}}</td>
-                        <td>{{fund.fund2 | currency: '₦'}}</td>
-                        <td>{{fund.returns_fund2 | number:'1.1-2'}} %</td>
-                        <td>{{fund.date | amDateFormat:'LL' }}</td>
-                    </tbody>
-                  </table>
+                  
+                  <app-table [dataSource]="fund2" [provider]="incProvider" [price]="incPrice2" [display]="retDisplay2" [date]="incDate"></app-table>
+
                 </div>
               </div>
             </article>
@@ -203,23 +99,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Last Price</th>
-                        <th>(%)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let result of resultsii">
-                        <td>{{result.provider}}</td>
-                        <td>{{result.yend | currency: '₦'}} </td>
-                        <td>{{result.latest | currency: '₦'}} </td>
-                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="resultsii" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+
                 </div>
               </div>
             </article>
@@ -238,25 +119,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>(%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let inception of inception3 ">
-                        <td>{{inception.provider}}</td>
-                        <td>{{inception.fund3_price | currency: '₦'}}</td>
-                        <td>{{inception.fund3 | currency: '₦'}}</td>
-                        <td>{{inception.inception_fund3 | number:'1.1-2'}} %</td>
-                        <td>{{inception.date | amDateFormat:'LL'}}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="inception3" [provider]="incProvider" [price]="incPrice3" [display]="incDisplay3" [date]="incDate"></app-table>
+
                 </div>
               </div>
             </article>
@@ -267,25 +131,9 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>YTD {{year}} (%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let fund of fund3 ">
-                        <td>{{fund.provider}}</td>
-                        <td>{{fund.fund3_price | currency: '₦'}}</td>
-                        <td>{{fund.fund3 | currency: '₦'}}</td>
-                        <td>{{fund.returns_fund3 | number:'1.1-2'}} %</td>
-                        <td>{{fund.date | amDateFormat:'LL'}}</td>
-                    </tbody>
-                  </table>
+                  
+                  <app-table [dataSource]="fund3" [provider]="incProvider" [price]="incPrice3" [display]="retDisplay3" [date]="incDate"></app-table>
+                  
                 </div>
               </div>
             </article>
@@ -296,23 +144,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Last Price</th>
-                        <th>(%)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let result of resultsiii ">
-                        <td>{{result.provider}}</td>
-                        <td>{{result.yend | currency: '₦'}} </td>
-                        <td>{{result.latest | currency: '₦'}} </td>
-                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="resultsiii" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+
                 </div>
               </div>
             </article>
@@ -331,25 +164,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>YTD {{year}} (%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let inception of inception4 ">
-                        <td>{{inception.provider}}</td>
-                        <td>{{inception.fund4_price | currency: '₦'}}</td>
-                        <td>{{inception.fund4 | currency: '₦'}}</td>
-                        <td>{{inception.inception_fund4 | number:'1.1-2'}} %</td>
-                        <td>{{inception.date | amDateFormat:'LL'}}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="inception4" [provider]="incProvider" [price]="incPrice4" [display]="incDisplay4" [date]="incDate"></app-table>
+
                 </div>
               </div>
             </article>
@@ -360,25 +176,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Current Price</th>
-                        <th>YTD {{year}} (%)</th>
-                        <th>Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let fund of fund4 ">
-                        <td>{{fund.provider}}</td>
-                        <td>{{fund.fund4_price | currency: '₦'}}</td>
-                        <td>{{fund.fund4 | currency: '₦'}}</td>
-                        <td>{{fund.returns_fund4 | number:'1.1-2'}} %</td>
-                        <td>{{fund.date | amDateFormat:'LL'}}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="fund4" [provider]="incProvider" [price]="incPrice4" [display]="retDisplay4" [date]="incDate"></app-table>
+
                 </div>
               </div>
             </article>
@@ -389,23 +188,8 @@
               </div>
               <div class="message-body">
                 <div class="board-item">
-                  <table class="table is-bordered is-striped">
-                    <thead>
-                      <tr>
-                        <th>Fund Name</th>
-                        <th>Opening Price</th>
-                        <th>Last Price</th>
-                        <th>(%)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let result of resultsiv ">
-                        <td>{{result.provider}}</td>
-                        <td>{{result.yend | currency: '₦'}}</td>
-                        <td>{{result.latest | currency: '₦'}}</td>
-                        <td>{{ ((result.latest - result.yend) / result.yend ) | percent:'1.1-2' }}</td>
-                    </tbody>
-                  </table>
+                  <app-table [dataSource]="resultsiv" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+
                 </div>
               </div>
             </article>
@@ -413,39 +197,39 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Fund V"> 
+    <mat-tab label="Fund V">
       <div class="example-large-box">
         <div class="columns is-centered is-multiline" id="sectioncontainer">
           <div class="column is-narrow">
-              <article class="message">
-                  <div class="message-header">
-                    <!-- Make a header using the `name` property from the current season in the loop -->
-                    <p class="has-text-centered">Return (%) Since Inception </p>
-                  </div>
-                  <div class="message-body">
-                    <div class="board-item">
-                      <table class="table is-bordered is-striped">
-                        <thead>
-                          <tr>
-                            <th>Fund Name</th>
-                            <th>Opening Price</th>
-                            <th>Current Price</th>
-                            <th>(%)</th>
-                            <th>Date</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </article>
+            <article class="message">
+              <div class="message-header">
+                <!-- Make a header using the `name` property from the current season in the loop -->
+                <p class="has-text-centered">Return (%) Since Inception </p>
+              </div>
+              <div class="message-body">
+                <div class="board-item">
+                  <table class="table is-bordered is-striped">
+                    <thead>
+                      <tr>
+                        <th>Fund Name</th>
+                        <th>Opening Price</th>
+                        <th>Current Price</th>
+                        <th>(%)</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
             <article class="message">
               <div class="message-header">
                 <!-- Make a header using the `name` property from the current season in the loop -->
@@ -479,7 +263,7 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Fund VI"> 
+    <mat-tab label="Fund VI">
       <div class="example-large-box">
         <div class="columns is-centered is-multiline" id="sectioncontainer">
           <div class="column is-narrow">

@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { ValuesPipe } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { environment } from './../environments/environment';
+import { TableComponent } from './table/table.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { environment } from './../environments/environment';
     AppComponent,
     HomeComponent,
     NavComponent,
-    ValuesPipe
+    ValuesPipe,
+    TableComponent
   ],
   imports: [
     AppRoutingModule,
