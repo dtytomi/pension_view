@@ -1,0 +1,6 @@
+@media only screen and (max-width: 600px) {
+
+    .navbar.is-fixed-top {
+      z-index: -1 !important;
+    }
+  }
