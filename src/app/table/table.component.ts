@@ -21,7 +21,7 @@ displayedColumns = [];
     this.dataSource.sort = this.sort;
     this.provider.map(x =>{
       this.displayedColumns.push(x.displayedColumns);
-      console.log(this.displayedColumns) 
+      // console.log(this.displayedColumns) 
     })
     this.price.map(x =>{
       this.displayedColumns.push(x.displayedColumns);
