@@ -112,7 +112,8 @@ export class HomeComponent implements OnInit {
   getPensions(): void {
     this.pensionService.getPensions()
       .subscribe((data: any) => {
-        this.pensions = new MatTableDataSource(data.pensions)
+        console.log(data)
+        this.pensions = new MatTableDataSource(data)
         console.log(this.pensions)
       });
   }

@@ -31,6 +31,21 @@ import { ValuesPipe } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { environment } from './../environments/environment';
 import { TableComponent } from './table/table.component';
+import { ControlComponent } from './admin/control/control.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddComponent } from './admin/add/add.component';
+import { EditComponent } from './admin/edit/edit.component';
+import { ListComponent } from './admin/list/list.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import { LoginComponent } from './auth/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './auth/auth.guard';
+
+
 
 
 @NgModule({
@@ -39,7 +54,12 @@ import { TableComponent } from './table/table.component';
     HomeComponent,
     NavComponent,
     ValuesPipe,
-    TableComponent
+    TableComponent,
+    ControlComponent,
+    AddComponent,
+    EditComponent,
+    ListComponent,
+    LoginComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -65,7 +85,14 @@ import { TableComponent } from './table/table.component';
     MatTableModule, MatTabsModule, 
     MatCheckboxModule, MatToolbarModule, 
     MatCardModule, MatFormFieldModule, MatProgressSpinnerModule, 
-    MatInputModule, MatPaginatorModule
+    MatInputModule, MatPaginatorModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    ToastrModule.forRoot(),
   ],
   exports: [
     MatTabsModule, MatDividerModule, MatSliderModule, 
@@ -77,7 +104,8 @@ import { TableComponent } from './table/table.component';
     MatInputModule, MatPaginatorModule
   ],
   providers: [
-    {provide: 'apiUrl', useValue: environment.API_URL}
+    {provide: 'apiUrl', useValue: environment.API_URL},
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

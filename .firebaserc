@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pensions-de287": {
+      "hosting": {
+        "pension-frontend": [
+          "pensions-de287"
+        ]
+      }
+    }
+  }
+}
