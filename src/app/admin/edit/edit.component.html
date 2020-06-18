@@ -1,0 +1,26 @@
+<form class="form-inline mb-4">
+    <form [formGroup]="form" (submit)="onUpdate()" class="form-inline mb-4">
+      <select formControlName="provider" [ngClass]="{ 'is-invalid': submit && f.provider.errors }" placeholder="Main Image Caption"  class="form-control m-2" >
+          <option *ngFor="let provider of providers" [ngValue]="provider">{{provider}}</option>
+          
+        </select>
+  
+      
+      <div class="form-group">
+        <input type="text" class="form-control m-2" formControlName="fund1" placeholder="Fund 1 price"[ngClass]="{ 'is-invalid': submit && f.fund1.errors }">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control m-2" formControlName="fund2" placeholder="Fund 2 price"[ngClass]="{ 'is-invalid': submit && f.fund2.errors }">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control m-2" formControlName="fund3" placeholder="Fund 3 price"[ngClass]="{ 'is-invalid': submit && f.fund3.errors }">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control m-2" formControlName="fund4" placeholder="Fund 4 Price"[ngClass]="{ 'is-invalid': submit && f.fund4.errors }">
+      </div>
+      <div class="form-group">
+        <p>Fund date</p>
+        <input type="text" class="form-control m-2" formControlName="date" placeholder="6 15, 2020"[ngClass]="{ 'is-invalid': submit && f.date.errors }">
+      </div>
+      <button type="submit" class="btn btn-primary m-2">Update Fund</button>
+    </form>

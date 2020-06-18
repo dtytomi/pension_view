@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "pension-frontend",
+      "public": "dist/pension-frontend",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
