@@ -4,20 +4,17 @@
       <a class="navbar-item is-size-4">
         <span class="has-text-success" style="font-family:cursive">Naija</span><span class="has-text-link"><strong>Pension</strong></span>
       </a>
-      
-
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-        data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="field is-grouped">
-          
+        <strong>Contact:  </strong>  <a class="has-text-link" style="font-style: italic;" href="mailto:support@naijapension.com">support@naijapension.com</a>
+      </div>
+      <div class="navbar-item" *ngIf="authService.loggedIn">
+        <div class="buttons">
+          <a (click)="onLogout()" class="button is-light">
+            Log out
+          </a>
         </div>
       </div>
     </div>

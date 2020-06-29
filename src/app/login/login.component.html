@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">Please sign in</h1>
+    <div class="columns">
+      <div class="column is-half">
+        <form [formGroup]="form" (submit)="onLogin()" class="form-signin">
+          <h3 class="h3 mb-3 font-weight-normal"></h3>
+
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input is-small is-success" formControlName="username" id="inputUsername" type="text" placeholder="Username"[ngClass]="{'is-invalid': submit && f.username.errors }" required>
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </div>
+            <p class="help is-success">This username is available</p>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input is-small is-success" formControlName="password" id="inputPassword" type="password" placeholder="Password" [ngClass]="{'is-invalid': submit && f.password.errors }" required>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </div>
+            <p class="help is-success">This Password is available</p>
+          </div>
+
+          <button class="button is-success is-normal is-pulled-right" type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="content has-text-centered">
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+  </div>
+</footer>

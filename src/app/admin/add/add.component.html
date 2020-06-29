@@ -1,29 +1,54 @@
-<h3>Add Fund Manager</h3>
+<div class="columns">
+  <div class="column is-two-thirds">
 
-<form class="form-inline mb-4">
-  <form [formGroup]="form" (submit)="onCreate()" class="form-inline mb-4">
-    <select formControlName="provider" [ngClass]="{ 'is-invalid': submit && f.provider.errors }" placeholder="Main Image Caption"  class="form-control m-2" >
-        <option *ngFor="let provider of providers" [ngValue]="provider">{{provider}}</option>
-        
-      </select>
+    <h3 class="title">Add Pension Fund</h3>
 
-    
-    <div class="form-group">
-      <input type="text" class="form-control m-2" formControlName="fund1" placeholder="Fund 1 price"[ngClass]="{ 'is-invalid': submit && f.fund1.errors }">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control m-2" formControlName="fund2" placeholder="Fund 2 price"[ngClass]="{ 'is-invalid': submit && f.fund2.errors }">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control m-2" formControlName="fund3" placeholder="Fund 3 price"[ngClass]="{ 'is-invalid': submit && f.fund3.errors }">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control m-2" formControlName="fund4" placeholder="Fund 4 price"[ngClass]="{ 'is-invalid': submit && f.fund4.errors }">
-    </div>
-    <div class="form-group">
-      <p>Fund date</p>
-      <input type="text" class="form-control m-2" formControlName="date" placeholder="6 15, 2020 (MM DD, YYYY)"[ngClass]="{ 'is-invalid': submit && f.date.errors }">
-    </div>
-    <button type="submit" class="btn btn-primary m-2">Add Fund</button>
-  </form>
-  <p>{{date}}</p>
+    <form [formGroup]="form" (submit)="onCreate()" class="form-inline mb-4">
+
+      <div class="field">
+        <div class="control">
+          <div class="select is-primary">
+            <select formControlName="provider" [ngClass]="{ 'is-invalid': submit && f.provider.errors }">
+              <option *ngFor="let provider of providers" [ngValue]="provider">{{provider}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" class="input is-primary" formControlName="fund1" placeholder="Fund 1 price"[ngClass]="{ 'is-invalid': submit && f.fund1.errors }">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" class="input is-primary" formControlName="fund2" placeholder="Fund 2 price"[ngClass]="{ 'is-invalid': submit && f.fund2.errors }">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" class="input is-primary" formControlName="fund3" placeholder="Fund 3 price"[ngClass]="{ 'is-invalid': submit && f.fund3.errors }">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input type="text" class="input is-primary" formControlName="fund4" placeholder="Fund 4 price"[ngClass]="{ 'is-invalid': submit && f.fund4.errors }">
+        </div>
+      </div>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Choose Date</mat-label>
+        <input formControlName="date" matInput [matDatepicker]="dp3">
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+
+      <button class="button is-success is-normal is-pulled-right" type="submit">Add Fund</button>
+    </form>
+  </div>
+</div>
+  

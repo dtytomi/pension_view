@@ -1,9 +1,9 @@
 import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import { PensionService } from '../pension.service';
-import { RESULTS } from '../models/fundI.ytd';
-import { RESULTSII } from '../models/fundII.ytd';
-import { RESULTSIII } from '../models/fundIII.ytd';
-import { RESULTSIV } from '../models/fundIV.ytd';
+import { PensionService } from '../_services';
+import { RESULTS } from '../_models/fundI.ytd';
+import { RESULTSII } from '../_models/fundII.ytd';
+import { RESULTSIII } from '../_models/fundIII.ytd';
+import { RESULTSIV } from '../_models/fundIV.ytd';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 
@@ -82,7 +82,9 @@ export class HomeComponent implements OnInit {
     {displayedColumns: 'Date',value:'fund_date'},]
     incDate = [
       {displayedColumns: 'Date',value:'date'},]
+
   @ViewChild(MatSort, {static: false}) sort: MatSort;
+  
   constructor(private pensionService :PensionService) { }
   
   ngOnInit() {
@@ -109,18 +111,11 @@ export class HomeComponent implements OnInit {
     
     
   }
-
+  
   getPensions(): void {
     this.pensionService.getPensions()
       .subscribe((data: any) => {
-<<<<<<< HEAD
-        this.pensions = new MatTableDataSource(data.pensions)
-        // console.log(this.pensions)
-=======
-        console.log(data)
-        this.pensions = new MatTableDataSource(data)
-        console.log(this.pensions)
->>>>>>> 3489963d2cd2307c83463bed2e23cc5bff9cbd68
+        this.pensions = new MatTableDataSource(data.result)
       });
   }
 
@@ -194,7 +189,7 @@ export class HomeComponent implements OnInit {
 
 @Pipe({ name: 'values',  pure: false })
 export class ValuesPipe implements PipeTransform {
-  transform(value: any, args: any[] = null): any {
+  transform(value: any[] = null): any {
     return Object.keys(value).map(key => value[key]);
   }
 }

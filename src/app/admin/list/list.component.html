@@ -1,37 +1,47 @@
-<h4>Managers</h4>
 <div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr class="table-primary">
-        <th scope="col">Providers</th>
-        <th scope="col">Fund 1</th>
-        <th scope="col">Fund 2</th>
-        <th scope="col">Fund 3</th>
-        <th scope="col">Fund 4</th>    
-        <th scope="col">Fund date</th>    
-        <th scope="col">Date Updated</th>    
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <!-- <td colspan="5" class="alert alert-danger" >error</td> -->
-      </tr>
-      <tr>
-      <tr *ngFor="let pension of pensions">
-        <th scope="row">{{pension?.provider}}</th>
-        <td>{{pension?.fund1}}</td>
-        <td>{{pension?.fund2}}</td>
-        <td>{{pension?.fund3}}</td>
-        <td>{{pension?.fund4}}</td>
-        <td>{{pension?.fund_date | date}}</td>
-        <td>{{pension?.date | date : 'medium'}}</td>
-        <th>
-          <a class="edit mx-4" (click)="onUpdate(pension?.id)">edit</a>
-          <a class="del" (click)="onDelete(pension?.id)">delete</a>
-        </th>
-      </tr>
-    </tbody>
-  </table>
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
 
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let drug"> {{drug.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="provider">
+        <mat-header-cell *matHeaderCellDef> Provider </mat-header-cell>
+        <mat-cell *matCellDef="let pension"> {{pension.provider}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fund1">
+        <mat-header-cell *matHeaderCellDef> Fund1 </mat-header-cell>
+        <mat-cell *matCellDef="let pension"> {{pension.fund1}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fund2">
+        <mat-header-cell *matHeaderCellDef> Fund2 </mat-header-cell>
+        <mat-cell *matCellDef="let pension"> {{pension.fund2}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fund3">
+        <mat-header-cell *matHeaderCellDef> Fund3 </mat-header-cell>
+        <mat-cell *matCellDef="let pension"> {{pension.fund3}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fund4">
+        <mat-header-cell *matHeaderCellDef> Fund4 </mat-header-cell>
+        <mat-cell *matCellDef="let pension"> {{pension.fund4}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fund_date">
+        <mat-header-cell *matHeaderCellDef> fund_date </mat-header-cell>
+        <mat-cell *matCellDef="let pension"> {{pension.fund_date}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row mat-row *matRowDef="let row; columns: displayedColumns" 
+      (click)="rowClicked()"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+  </div>
 </div>
