@@ -1,15 +1,15 @@
 <nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
-      <a class="navbar-item is-size-4">
+      <!-- <a class="navbar-item is-size-4">
         <span class="has-text-success" style="font-family:cursive">Naija</span><span class="has-text-link"><strong>Pension</strong></span>
-      </a>
+      </a> -->
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
+      <!-- <div class="navbar-item">
         <strong>Contact:  </strong>  <a class="has-text-link" style="font-style: italic;" href="mailto:support@naijapension.com">support@naijapension.com</a>
-      </div>
+      </div> -->
       <div class="navbar-item" *ngIf="authService.loggedIn">
         <div class="buttons">
           <a (click)="onLogout()" class="button is-light">

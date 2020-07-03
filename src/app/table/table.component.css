@@ -1,5 +1,5 @@
 table {
-    width: 100%;
+    width: 100% !important;
 }
 .mat-header-cell {
     font-size: 16px;
@@ -8,3 +8,8 @@ table {
     padding-right: 10px;
     padding-top: 0px;
   }
+  .scroll {
+    /* width: 30em; */
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+}
