@@ -82,7 +82,7 @@ div.message-header p {
   margin: 0;
 }
 .scroll {
-    width: 30em;
+    /* width: 30em; */
     overflow-x: auto !important;
     white-space: nowrap !important;
 }

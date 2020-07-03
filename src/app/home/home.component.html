@@ -1,23 +1,6 @@
 <section class="section">
   <div class="container">
     <mat-tab-group dynamicHeight mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
-      <mat-tab label="Fund Price List">
-        <div class="example-large-box">
-          <div class="columns is-centered is-multiline scroll" id="sectioncontainer">
-            <div class="column">
-              <article class="message">
-                <div class="message-header">
-                  <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p>Prices</p>
-                </div>
-                <div class="message-body">
-                  <app-table [dataSource]="pensions" [provider]="provider" [price]="price" [date]="date"></app-table>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </mat-tab>
       <mat-tab label="Fund I">
         <div class="example-large-box">
           <div class="columns is-centered is-multiline scroll" id="sectioncontainer">
@@ -152,6 +135,23 @@
                 </div>
                 <div class="message-body">
                   <app-table [dataSource]="resultsiv" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Fund Price List">
+        <div class="example-large-box">
+          <div class="columns is-centered is-multiline scroll" id="sectioncontainer">
+            <div class="column">
+              <article class="message">
+                <div class="message-header">
+                  <!-- Make a header using the `name` property from the current season in the loop -->
+                  <p>Prices</p>
+                </div>
+                <div class="message-body">
+                  <app-table [dataSource]="pensions" [provider]="provider" [price]="price" [date]="date"></app-table>
                 </div>
               </article>
             </div>
