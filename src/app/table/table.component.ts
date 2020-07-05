@@ -21,11 +21,14 @@ export class TableComponent implements OnInit{
 displayedColumns = [];
 
   ngOnInit() {
+
     this.dataSource.sort = this.sort;
+
     this.provider.map((x: any)  => {
       this.displayedColumns.push(x.displayedColumns);
       // console.log(this.displayedColumns) 
     })
+    
     this.price.map((x: any) =>{
       this.displayedColumns.push(x.displayedColumns);
     })
@@ -49,6 +52,7 @@ displayedColumns = [];
     this.dataSource.sort = this.sort;
     // console.log(this.dataSource.sort)
   }
+
   sortData(sort: Sort){
     // Sort sorts the current list, but it wasnt updating it unless i reassigned.
     this.dataSource.data = this.dataSource.data.sort((a : any, b: any) => {
@@ -56,6 +60,7 @@ displayedColumns = [];
       return this._compare(a[sort.active], b[sort.active], isAsc);
     });
   }
+
   private _compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
