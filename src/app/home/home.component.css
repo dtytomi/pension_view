@@ -81,8 +81,3 @@ div.message-header {
 div.message-header p {
   margin: 0;
 }
-.scroll {
-    /* width: 30em; */
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-}

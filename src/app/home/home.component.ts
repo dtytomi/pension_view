@@ -48,7 +48,9 @@ export class HomeComponent implements OnInit {
   inception2: any = [];
   inception3: any = [];
   inception4: any = [];
+
   Date = new Date(); 
+
   year = this.Date.getUTCFullYear(); 
   lastyear = this.Date.getUTCFullYear() - 1;
   results = RESULTS;
@@ -56,13 +58,16 @@ export class HomeComponent implements OnInit {
   resultsiii = RESULTSIII;
   resultsiv = RESULTSIV;
   displayedColumns = [];
+
   price = [
     {displayedColumns: 'Fund 1',value:'fund1'},
     {displayedColumns: 'Fund 2',value:'fund2'},
     {displayedColumns: 'Fund 3',value:'fund3'},
     {displayedColumns: 'Fund 4',value:'fund4'},
   ];
+
   provider = [{displayedColumns: 'Provider',value:'provider'}]
+
   incDisplay1 = [{displayedColumns: '(%)',value:'inception_fund1'}]
   incDisplay2 = [{displayedColumns: '(%)',value:'inception_fund2'}]
   incDisplay3 = [{displayedColumns: '(%)',value:'inception_fund3'}]
@@ -79,6 +84,7 @@ export class HomeComponent implements OnInit {
   incPrice4 = [{displayedColumns: 'Opening Price',value:'fund4_price'},{displayedColumns: 'Current Price',value:'fund4'}]
   fullYear = [{displayedColumns: 'Opening Price',value:'yend'},{displayedColumns: 'Last Price',value:'latest'}]
   fullDisplay = [{displayedColumns: '(%)', value1: 'yend', value2: 'latest'}]
+
   date = [
     {displayedColumns: 'Date',value:'fund_date'},]
     incDate = [
@@ -89,6 +95,7 @@ export class HomeComponent implements OnInit {
   constructor(private pensionService :PensionService) { }
   
   ngOnInit() {
+    
     this.getPensions();
     this.getFund1();
     this.getFund2();
@@ -102,15 +109,14 @@ export class HomeComponent implements OnInit {
       this.displayedColumns.push(x.displayedColumns);
       // console.log(this.displayedColumns) 
      })
+
     this.price.map(x =>{
      this.displayedColumns.push(x.displayedColumns);
     })
+
      this.date.map(x =>{
       this.displayedColumns.push(x.displayedColumns);
-     })
-
-    
-    
+     })    
   }
   
   getPensions(): void {
