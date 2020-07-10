@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
   retDisplay3 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund3'}]
   retDisplay4 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund4'}]
   incProvider = [{displayedColumns: 'Fund Name',value:'provider'}]
+  serialProvider = [{displayedColumns: 'SN',value:'provider'}]
   incPrice1 = [{displayedColumns: 'Opening Price',value:'fund1_price'},{displayedColumns: 'Current Price',value:'fund1'}]
   incPrice2 = [{displayedColumns: 'Opening Price',value:'fund2_price'},{displayedColumns: 'Current Price',value:'fund2'}]
   incPrice3 = [{displayedColumns: 'Opening Price',value:'fund3_price'},{displayedColumns: 'Current Price',value:'fund3'}]

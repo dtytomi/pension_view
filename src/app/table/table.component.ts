@@ -15,36 +15,45 @@ export class TableComponent implements OnInit{
 @Input() display : any;
 @Input() display1 : any;
 @Input() date : any;
+@Input() serial : any;
 
 @ViewChild(MatSort, {static: true}) sort: MatSort;
 
 displayedColumns = [];
 
   ngOnInit() {
+    console.log(this.provider, this.serial) 
+    // this.displayedColumns.push("S/N")
     this.dataSource.sort = this.sort;
+    if(this.serial) {
+      this.serial.map((x: any)  => {
+        this.displayedColumns.push(x.displayedColumns);
+      })
+    }
     this.provider.map((x: any)  => {
       this.displayedColumns.push(x.displayedColumns);
-      // console.log(this.displayedColumns) 
     })
-    this.price.map((x: any) =>{
-      this.displayedColumns.push(x.displayedColumns);
-    })
-    
     if (this.display) {
       this.display.map((x: any) => {
         this.displayedColumns.push(x.displayedColumns)
       })
-    }if (this.display1) {
+    }
+    if (this.display1) {
       this.display1.map((x: any) => {
         this.displayedColumns.push(x.displayedColumns)
       })
     }
+    this.price.map((x: any) =>{
+      this.displayedColumns.push(x.displayedColumns);
+    })
+    
+    
     if(this.date) {
       this.date.map((x: any) =>{
         this.displayedColumns.push(x.displayedColumns);
       })
     }
-    // console.log(this.displayedColumns)
+    console.log(this.displayedColumns)
     // console.log(this.dataSource.sort)
     this.dataSource.sort = this.sort;
     // console.log(this.dataSource.sort)
