@@ -7,4 +7,5 @@ export class Pension {
   fund4: string;
   fund_date: string;
   provider: string; 
+  sn: number;
 }

@@ -31,13 +31,8 @@ export class PensionService {
     pension.fund_date = pension.date.toLocaleDateString();
     delete pension.date;
 
-    console.log(pension);
-
     return this.http.post<Pension>(`${this.apiUrl}pensions`, pension, httpOptions)
       .pipe(
-        tap(
-          data => console.log(data)
-        ),
         catchError(this.handleError('Pension Not Added', []))
       );
   }

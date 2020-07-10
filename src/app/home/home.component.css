@@ -1,16 +1,3 @@
-table {
-  width: 100%;
-}
-section.container {
-  margin-top: 20%;
-}
-
-@media only screen and (min-width: 768px) {
-
-  section.container {
-    margin-top: 5%;
-  }
-}
 @media only screen and (max-width: 600px) {
 
   .example-large-box {
@@ -21,14 +8,13 @@ section.container {
     padding: 16px;
     border-radius: 8px;
   }
-  .navbar.is-fixed-top {
-    z-index: -1 !important;
-  }
-}
 
-/* Keep from sticking to sides */
-.cards-container {
-  max-width: 95%;
+  .scroll {
+    width: 15em;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+  
 }
 
 .example-large-box {
