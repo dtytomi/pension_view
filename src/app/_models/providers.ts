@@ -16,7 +16,7 @@ export const PROVIDERS: Providers[] = [
   { name: "investmentone" },
   { name: "leadwaypension" },
   { name: "nlpcpfa" },
-  { name: "NPF Pensions" },
+  { name: "npfpensions" },
   { name: "oakpensions" },
   { name: "palpensions" },
   { name: "premiumpension" },
