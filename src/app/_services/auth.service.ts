@@ -36,6 +36,8 @@ export class AuthService {
       .pipe(
         map(user => {
           if (user && user.access_token) {
+            console.log(user.access_token);
+            
             localStorage.setItem('currentUser', JSON.stringify(user.access_token));
           }
           this.setLoggedIn(true);

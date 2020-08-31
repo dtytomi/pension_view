@@ -70,9 +70,6 @@ import { OrientationComponent } from './modal/orientation/orientation.component'
 		HttpClientModule,
 		JwtModule.forRoot({
 			config: {
-				tokenGetter: function tokenGetter() {
-					return JSON.parse(localStorage.getItem('currentUser'))
-				},
 				whitelistedDomains: ['localhost:5000', 'http://52.150.38.40:5000'],
 				blacklistedRoutes: ['http://localhost:5000/api/users/login',
 					'http://52.150.38.40:5000/api/users/login'],
