@@ -8,7 +8,8 @@ import { Pension } from "../_models";
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json; charset=utf-8'
+    'Content-Type':  'application/json; charset=utf-8',
+    'Authorization': `Bearer ${localStorage.getItem('currentUser')}`
   })
 };
 
@@ -31,12 +32,12 @@ export class PensionService {
     pension.fund_date = pension.date.toLocaleDateString();
     delete pension.date;
 
-    console.log(pension);
+    // console.log(pension);
 
     return this.http.post<Pension>(`${this.apiUrl}pensions`, pension, httpOptions)
       .pipe(
         tap(
-          data => console.log(data)
+          // data => console.log(data)
         ),
         catchError(this.handleError('Pension Not Added', []))
       );

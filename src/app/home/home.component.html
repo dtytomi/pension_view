@@ -11,7 +11,9 @@
                   <p class="has-text-centered">Year To Date Return (%) {{year}} </p>
                 </div>
                 <div class="message-body">
-                  <app-table [dataSource]="fund1" [serial]="serialProvider" [provider]="incProvider" [price]="incPrice1" [display]="retDisplay1" [date]="incDate"></app-table>
+                  <div class="board-item scroll">
+                    <app-table [dataSource]="fund1" [serial]="serialProvider" [provider]="incProvider" [price]="incPrice1" [display]="retDisplay1" [date]="incDate"></app-table>
+                  </div>
                 </div>
               </article>
               <article class="message">

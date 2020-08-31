@@ -72,10 +72,12 @@ export class AddComponent implements OnInit {
       .subscribe((res: any) => {
         if (res)
           this.toastr.success('Added Successfully!');
+      }, err=>{
+        this.toastr.error(err)
       });
 
     this.submit = false
-    this.form.reset()
+    // this.form.reset()
   }
 
 }
