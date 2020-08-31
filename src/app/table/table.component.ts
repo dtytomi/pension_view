@@ -22,7 +22,7 @@ export class TableComponent implements OnInit{
 displayedColumns = [];
 
   ngOnInit() {
-    console.log(this.provider, this.serial) 
+    // console.log(this.provider, this.serial) 
     // this.displayedColumns.push("S/N")
     this.dataSource.sort = this.sort;
     if(this.serial) {
@@ -53,7 +53,7 @@ displayedColumns = [];
         this.displayedColumns.push(x.displayedColumns);
       })
     }
-    console.log(this.displayedColumns)
+    // console.log(this.displayedColumns)
     // console.log(this.dataSource.sort)
     this.dataSource.sort = this.sort;
     // console.log(this.dataSource.sort)

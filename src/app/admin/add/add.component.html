@@ -9,7 +9,7 @@
         <div class="control">
           <div class="select is-primary">
             <select formControlName="provider" [ngClass]="{ 'is-invalid': submit && f.provider.errors }">
-              <option *ngFor="let provider of providers" [ngValue]="provider">{{provider}}</option>
+              <option *ngFor="let provider of providers" [ngValue]="provider.name">{{provider.name}}</option>
             </select>
           </div>
         </div>

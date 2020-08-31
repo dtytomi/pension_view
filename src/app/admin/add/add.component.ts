@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { PensionService } from '../../_services';
+import { PROVIDERS } from '../../_models';
 
 @Component({
   selector: 'app-add',
@@ -14,29 +15,7 @@ export class AddComponent implements OnInit {
   form: FormGroup
   submit = false;
 
-  providers = [
-    "aiicopension",
-    "aptpensions",
-    "arm",
-    "axamansard",
-    "crusaderpensions",
-    "fcmbpensions",
-    "fidelitypension",
-    "firstguaranteepension",
-    "ieianchorpensions",
-    "investmentone",
-    "leadwaypension",
-    "nlpcpfa",
-    "npfpensions",
-    "oakpensions",
-    "palpensions",
-    "premium",
-    "radixpension",
-    "sigmapensions",
-    "stanbicpension",
-    "trustfundpensions",
-    "vgpensions",
-  ]
+  providers = PROVIDERS;
 
   constructor( 
     private pensionService: PensionService,

@@ -1,38 +1,12 @@
 import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+
 import { PensionService } from '../_services';
 import { RESULTS } from '../_models/fundI.ytd';
 import { RESULTSII } from '../_models/fundII.ytd';
 import { RESULTSIII } from '../_models/fundIII.ytd';
 import { RESULTSIV } from '../_models/fundIV.ytd';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
-
-
-
-export class Pension {
-  fund1: number;
-  fund2: number;
-  fund3: number;
-  fund4: number;
-  fund_date: string;
-  date: string;
-  provider: string
-  sn: number;
-}
-
-export class Fund {
-  fund: string;
-  date: string;
-  provider: string
-  sn: number;
-}
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
 
 @Component({
   selector: 'app-home',
