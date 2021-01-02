@@ -22,9 +22,11 @@ export class TableComponent implements OnInit{
 displayedColumns = [];
 
   ngOnInit() {
+
     // console.log(this.provider, this.serial) 
     // this.displayedColumns.push("S/N")
     this.dataSource.sort = this.sort;
+
     if(this.serial) {
       this.serial.map((x: any)  => {
         this.displayedColumns.push(x.displayedColumns);
@@ -53,13 +55,10 @@ displayedColumns = [];
         this.displayedColumns.push(x.displayedColumns);
       })
     }
-    // console.log(this.displayedColumns)
-    // console.log(this.dataSource.sort)
-    this.dataSource.sort = this.sort;
-    // console.log(this.dataSource.sort)
+    
   }
 
-  sortData(sort: Sort){
+  sortData(sort: Sort) {
     // Sort sorts the current list, but it wasnt updating it unless i reassigned.
     this.dataSource.data = this.dataSource.data.sort((a : any, b: any) => {
       const isAsc = sort.direction === 'asc';

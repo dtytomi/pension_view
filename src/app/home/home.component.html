@@ -1,5 +1,15 @@
 <section class="section">
   <div class="container">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Click the date icon</mat-label>
+        <input matInput [matDatepicker]="dp3"  [ngModel]="date_value" (ngModelChange)="modelChangeFn($event)"
+          disabled>
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+      </p> 
+    <br />
     <mat-tab-group dynamicHeight mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
       <mat-tab label="Fund I">
         <div class="example-large-box">
@@ -8,7 +18,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{year}} </p>
+                  <p class="has-text-centered">Year To Date Return (%) {{ lastyear }} </p>
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
@@ -19,7 +29,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                  <p class="has-text-centered">Full Year Return (%) {{ yearbefore }}</p>
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
@@ -38,7 +48,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+                  <p class="has-text-centered">Year To Date Return (%) {{ lastyear }}</p>
                 </div>
                 <div class="message-body">   
                   <div class="board-item scroll">
@@ -49,7 +59,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                  <p class="has-text-centered">Full Year Return (%) {{ yearbefore }}</p>
                 </div>
                 <div class="message-body">
                   <div class="board-item">
@@ -70,7 +80,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+                  <p class="has-text-centered">Year To Date Return (%) {{lastyear}}</p>
                 </div>
                 <div class="message-body">  
                   <div class="board-item scroll">
@@ -81,7 +91,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                  <p class="has-text-centered">Full Year Return (%) {{ yearbefore }}</p>
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
@@ -100,7 +110,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{year}}</p>
+                  <p class="has-text-centered">Year To Date Return (%) {{lastyear}}</p>
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
@@ -111,7 +121,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                  <p class="has-text-centered">Full Year Return (%) {{ yearbefore }}</p>
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">

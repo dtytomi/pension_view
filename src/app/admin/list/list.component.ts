@@ -28,7 +28,7 @@ export class ListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.pensionService.getPensions()
+    this.pensionService.getPensions(null)
       .subscribe((data: any) => {
         this.dataSource = new MatTableDataSource(data.result)
       });
@@ -55,7 +55,7 @@ export class PensionDataSource extends DataSource<Pension> {
 
   connect(): Observable<Pension[]> {
 
-    this.pensionService.getPensions()
+    this.pensionService.getPensions(null)
       .subscribe(res => {
         this.subject.next(res);
       });

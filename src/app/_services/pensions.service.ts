@@ -38,8 +38,13 @@ export class PensionService {
       );
   }
 
-  getPensions() {
-    return this.http.get<any>(`${this.apiUrl}pensions/`)
+  getPensions(date) {
+    if (date == null) {
+      return this.http.get<any>(`${this.apiUrl}pensions/`);
+    }
+    else {
+      return this.http.get<any>(`${this.apiUrl}pensions/?date=` + date);
+    }
   }
 
   getPensionByID(id: number) {  
@@ -56,20 +61,40 @@ export class PensionService {
     return this.http.delete(`${this.apiUrl}pensions/` + id, httpOptions);
   }
 
-  getReturns1() {
-    return this.http.get(`${this.apiUrl}prices/returns_1`);
+  getReturns1(date) {
+    if (date == null) {
+      return this.http.get<any>(`${this.apiUrl}prices/returns_1`);
+    }
+    else {
+      return this.http.get(`${this.apiUrl}prices/returns_1?date=` + date);
+    }
   }
 
-  getReturns2() {
-    return this.http.get(`${this.apiUrl}prices/returns_2`);
+  getReturns2(date) {
+    if (date == null) {
+      return this.http.get<any>(`${this.apiUrl}prices/returns_2`);
+    }
+    else {
+      return this.http.get(`${this.apiUrl}prices/returns_2?date=` + date);
+    }
   }
 
-  getReturns3() {
-    return this.http.get(`${this.apiUrl}prices/returns_3`);
+  getReturns3(date) {
+    if (date == null) {
+      return this.http.get<any>(`${this.apiUrl}prices/returns_3`);
+    }
+    else {
+      return this.http.get(`${this.apiUrl}prices/returns_3?date=` + date);
+    }
   }
 
-  getReturns4() {
-    return this.http.get(`${this.apiUrl}prices/returns_4`);
+  getReturns4(date) {
+    if (date == null) {
+      return this.http.get<any>(`${this.apiUrl}prices/returns_4`);
+    }
+    else {
+      return this.http.get(`${this.apiUrl}prices/returns_4?date=` + date);
+    }
   }
 
   getInception1() {

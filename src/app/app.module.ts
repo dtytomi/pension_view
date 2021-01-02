@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { MomentModule } from 'ngx-moment';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
+import { IgxDatePickerModule } from 'igniteui-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -45,76 +45,77 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards';
 import { OrientationComponent } from './modal/orientation/orientation.component';
 
-
-
-
+//I keep the new line
 @NgModule({
-	declarations: [
-		AppComponent,
-		FundDatePipe,
-		HomeComponent,
-		NavComponent,
-		ValuesPipe,
-		TableComponent,
-		AdminComponent,
-		AddComponent,
-		EditComponent,
-		ListComponent,
-		LoginComponent,
-		OrientationComponent,
-	],
-	imports: [
-		AppRoutingModule,
-		BrowserModule,
-		BrowserAnimationsModule,
-		HttpClientModule,
-		JwtModule.forRoot({
-			config: {
-				whitelistedDomains: ['localhost:5000', 'http://52.150.38.40:5000'],
-				blacklistedRoutes: ['http://localhost:5000/api/users/login',
-					'http://52.150.38.40:5000/api/users/login'],
-				throwNoTokenError: true
-			}
-		}),
-		MatTabsModule,
-		MatDividerModule,
-		MatSliderModule,
-		MatSelectModule,
-		MatRadioModule,
-		MatDatepickerModule,
-		MatSnackBarModule,
-		MatNativeDateModule,
-		MomentModule.forRoot({
-			relativeTimeThresholdOptions: {
-				'm': 59
-			}
-		}),
-		MatIconModule,
-		MatDialogModule,
-		MatProgressSpinnerModule,
-		MatButtonModule, MatSortModule,
-		MatTableModule, MatTabsModule,
-		MatCheckboxModule, MatToolbarModule,
-		MatCardModule, MatFormFieldModule, MatProgressSpinnerModule,
-		MatInputModule, MatPaginatorModule,
-		ReactiveFormsModule,
-		FormsModule,
-		ToastrModule.forRoot(),
-	],
-	exports: [
-		MatTabsModule, MatDividerModule, MatSliderModule,
-		MatSelectModule, MatRadioModule, MatNativeDateModule,
-		MatDatepickerModule, MatSnackBarModule, MatIconModule,
-		MatDialogModule, MatProgressSpinnerModule, MatButtonModule,
-		MatSortModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
-		MatTableModule, MatTabsModule, MatFormFieldModule, MatProgressSpinnerModule,
-		MatInputModule, MatPaginatorModule
-	],
-	providers: [
-		{ provide: 'apiUrl', useValue: environment.API_URL },
-		{provide: Window, useValue: window},
-		AuthGuard
-	],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    FundDatePipe,
+    HomeComponent,
+    NavComponent,
+    ValuesPipe,
+    TableComponent,
+    AdminComponent,
+    AddComponent,
+    EditComponent,
+    ListComponent,
+    LoginComponent,
+    OrientationComponent,
+  ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    HammerModule, 
+    IgxDatePickerModule,
+    JwtModule.forRoot({
+      config: {
+        whitelistedDomains: ['localhost:5000', 'http://52.150.38.40:5000'],
+        blacklistedRoutes: ['http://localhost:5000/api/users/login',
+          'http://52.150.38.40:5000/api/users/login'],
+        throwNoTokenError: true
+      }
+    }),
+    MatTabsModule,
+    MatDividerModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatSnackBarModule,
+    MatNativeDateModule,
+    MomentModule.forRoot({
+      relativeTimeThresholdOptions: {
+        'm': 59
+      }
+    }),
+    MatIconModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatButtonModule, MatSortModule,
+    MatTableModule, MatTabsModule,
+    MatCheckboxModule, MatToolbarModule,
+    MatCardModule, MatFormFieldModule, MatProgressSpinnerModule,
+    MatInputModule, MatPaginatorModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ToastrModule.forRoot()
+  ],
+  exports: [
+    MatTabsModule, MatDividerModule, MatSliderModule,
+    MatSelectModule, MatRadioModule, MatNativeDateModule,
+    MatDatepickerModule, MatSnackBarModule, MatIconModule,
+    MatDialogModule, MatProgressSpinnerModule, MatButtonModule,
+    MatSortModule, MatCheckboxModule, MatToolbarModule, MatCardModule,
+    MatTableModule, MatTabsModule, MatFormFieldModule, MatProgressSpinnerModule,
+    MatInputModule, MatPaginatorModule
+  ],
+  providers: [
+    { provide: 'apiUrl', useValue: environment.API_URL },
+    { provide: Window, useValue: window },
+    AuthGuard
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

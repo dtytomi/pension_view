@@ -1,12 +1,15 @@
 import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
+import { FormControl } from '@angular/forms';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { PensionService } from '../_services';
 import { RESULTS } from '../_models/fundI.ytd';
 import { RESULTSII } from '../_models/fundII.ytd';
 import { RESULTSIII } from '../_models/fundIII.ytd';
 import { RESULTSIV } from '../_models/fundIV.ytd';
+
+const moment = require('moment');
 
 @Component({
   selector: 'app-home',
@@ -15,6 +18,7 @@ import { RESULTSIV } from '../_models/fundIV.ytd';
 })
 
 export class HomeComponent implements OnInit {
+
   
   pensions: any = [];
   fund1: any = []; fund2: any = []; fund3: any = []; fund4: any = [];
@@ -22,11 +26,13 @@ export class HomeComponent implements OnInit {
   inception2: any = [];
   inception3: any = [];
   inception4: any = [];
+  date_value = new FormControl(new Date());
 
   Date = new Date(); 
 
   year = this.Date.getUTCFullYear(); 
   lastyear = this.Date.getUTCFullYear() - 1;
+  yearbefore = this.Date.getUTCFullYear() - 2;
   results = RESULTS;
   resultsii = RESULTSII;
   resultsiii = RESULTSIII;
@@ -46,10 +52,10 @@ export class HomeComponent implements OnInit {
   incDisplay2 = [{displayedColumns: '(%)',value:'inception_fund2'}]
   incDisplay3 = [{displayedColumns: '(%)',value:'inception_fund3'}]
   incDisplay4 = [{displayedColumns: '(%)',value:'inception_fund4'}]
-  retDisplay1 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund1'}]
-  retDisplay2 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund2'}]
-  retDisplay3 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund3'}]
-  retDisplay4 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund4'}]
+  retDisplay1 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund1'}]
+  retDisplay2 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund2'}]
+  retDisplay3 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund3'}]
+  retDisplay4 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund4'}]
   incProvider = [{displayedColumns: 'Fund Name',value:'provider'}]
   serialProvider = [{displayedColumns: 'SN',value:'provider'}]
   incPrice1 = [{displayedColumns: 'Opening Price',value:'fund1_price'},{displayedColumns: 'Current Price',value:'fund1'}]
@@ -70,15 +76,15 @@ export class HomeComponent implements OnInit {
   
   ngOnInit() {
     
-    this.getPensions();
-    this.getFund1();
-    this.getFund2();
-    this.getFund3();
-    this.getFund4();
-    this.getInception1();
-    this.getInception2();
-    this.getInception3();
-    this.getInception4();
+    this.getPensions(null);
+    this.getFund1(null);
+    this.getFund2(null);
+    this.getFund3(null);
+    this.getFund4(null);
+    // this.getInception1();
+    // this.getInception2();
+    // this.getInception3();
+    // this.getInception4();
     this.provider.map(x =>{
       this.displayedColumns.push(x.displayedColumns);
       // console.log(this.displayedColumns) 
@@ -92,41 +98,51 @@ export class HomeComponent implements OnInit {
       this.displayedColumns.push(x.displayedColumns);
      })    
   }
+
+  modelChangeFn(value) {
+    this.date_value = value;
+    let date = moment(this.date_value).format('YYYY-MM-DD');
+
+    this.getPensions(date);
+    this.getFund1(date);
+    this.getFund2(date);
+    this.getFund3(date);
+    this.getFund4(date);
+  }
   
-  getPensions(): void {
-    this.pensionService.getPensions()
+  getPensions(date): void {
+    this.pensionService.getPensions(date)
       .subscribe((data: any) => {
         this.pensions = new MatTableDataSource(data.result)
       });
   }
 
-   getFund1(): void {
-    this.pensionService.getReturns1()
+  getFund1(date): void {
+    this.pensionService.getReturns1(date)
       .subscribe((data: any) => {
         this.fund1 = new MatTableDataSource(data.result) 
       })
           
   }
 
-  getFund2(): void {
-    this.pensionService.getReturns2()
+  getFund2(date): void {
+    this.pensionService.getReturns2(date)
       .subscribe((data: any) => {
         // console.log(data.result)
         this.fund2 = new MatTableDataSource(data.result)
       })
-          
   }
 
-  getFund3(): void {
-    this.pensionService.getReturns3()
+  getFund3(date): void {
+    this.pensionService.getReturns3(date)
       .subscribe((data: any) => {
         this.fund3 = new MatTableDataSource(data.result) 
       })
           
   }
 
-  getFund4(): void {
-    this.pensionService.getReturns4()
+  getFund4(date): void {
+    this.pensionService.getReturns4(date)
       .subscribe((data: any) => {
         this.fund4 = new MatTableDataSource(data.result) 
       })
