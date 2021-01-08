@@ -18,7 +18,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{ lastyear }} </p>
+                  <p class="has-text-centered">Year To Date Return (%) {{ year }} </p>
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
@@ -26,6 +26,19 @@
                   </div>
                 </div>
               </article>
+
+              <article class="message">
+                <div class="message-header">
+                  <!-- Make a header using the `name` property from the current season in the loop -->
+                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                </div>
+                <div class="message-body">
+                  <div class="board-item scroll">
+                    <app-table [dataSource]="ytd_2020_results" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                  </div>
+                </div>
+              </article>
+
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
@@ -33,7 +46,7 @@
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
-                    <app-table [dataSource]="results" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                    <app-table [dataSource]="ytd_2019_results" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
                   </div>
                 </div>
               </article>
@@ -48,7 +61,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{ lastyear }}</p>
+                  <p class="has-text-centered">Year To Date Return (%) {{ year }}</p>
                 </div>
                 <div class="message-body">   
                   <div class="board-item scroll">
@@ -56,6 +69,19 @@
                   </div>                 
                 </div>
               </article>
+
+              <article class="message">
+                <div class="message-header">
+                  <!-- Make a header using the `name` property from the current season in the loop -->
+                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                </div>
+                <div class="message-body">
+                  <div class="board-item scroll">
+                    <app-table [dataSource]="ytd_2020_resultsii" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                  </div>
+                </div>
+              </article>
+
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
@@ -64,7 +90,7 @@
                 <div class="message-body">
                   <div class="board-item">
                     <div class="board-item scroll">
-                      <app-table [dataSource]="resultsii" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                      <app-table [dataSource]="ytd_2019_resultsii" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
                     </div>
                   </div>
                 </div>
@@ -80,7 +106,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{lastyear}}</p>
+                  <p class="has-text-centered">Year To Date Return (%) {{ year }}</p>
                 </div>
                 <div class="message-body">  
                   <div class="board-item scroll">
@@ -88,6 +114,19 @@
                   </div>                  
                 </div>
               </article>
+
+              <article class="message">
+                <div class="message-header">
+                  <!-- Make a header using the `name` property from the current season in the loop -->
+                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                </div>
+                <div class="message-body">
+                  <div class="board-item scroll">
+                    <app-table [dataSource]="ytd_2020_resultsiii" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                  </div>
+                </div>
+              </article>
+
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
@@ -95,7 +134,7 @@
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
-                    <app-table [dataSource]="resultsiii" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                    <app-table [dataSource]="ytd_2019_resultsiii" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
                   </div> 
                 </div>
               </article>
@@ -110,7 +149,7 @@
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
-                  <p class="has-text-centered">Year To Date Return (%) {{lastyear}}</p>
+                  <p class="has-text-centered">Year To Date Return (%) {{ year }}</p>
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
@@ -118,6 +157,19 @@
                   </div>
                 </div>
               </article>
+
+              <article class="message">
+                <div class="message-header">
+                  <!-- Make a header using the `name` property from the current season in the loop -->
+                  <p class="has-text-centered">Full Year Return (%) {{ lastyear }}</p>
+                </div>
+                <div class="message-body">
+                  <div class="board-item scroll">
+                    <app-table [dataSource]="ytd_2020_resultsiv" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                  </div>
+                </div>
+              </article>
+
               <article class="message">
                 <div class="message-header">
                   <!-- Make a header using the `name` property from the current season in the loop -->
@@ -125,7 +177,7 @@
                 </div>
                 <div class="message-body">
                   <div class="board-item scroll">
-                    <app-table [dataSource]="resultsiv" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
+                    <app-table [dataSource]="ytd_2019_resultsiv" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
                   </div> 
                 </div>
               </article>

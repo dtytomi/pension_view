@@ -4,10 +4,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { PensionService } from '../_services';
-import { RESULTS } from '../_models/fundI.ytd';
-import { RESULTSII } from '../_models/fundII.ytd';
-import { RESULTSIII } from '../_models/fundIII.ytd';
-import { RESULTSIV } from '../_models/fundIV.ytd';
+import { ytd_2019_fund1, ytd_2020_fund1 } from '../_models/fundI.ytd';
+import { ytd_2019_fund2, ytd_2020_fund2 } from '../_models/fundII.ytd';
+import { ytd_2019_fund3, ytd_2020_fund3 } from '../_models/fundIII.ytd';
+import { ytd_2019_fund4, ytd_2020_fund4 } from '../_models/fundIV.ytd';
 
 const moment = require('moment');
 
@@ -33,10 +33,16 @@ export class HomeComponent implements OnInit {
   year = this.Date.getUTCFullYear(); 
   lastyear = this.Date.getUTCFullYear() - 1;
   yearbefore = this.Date.getUTCFullYear() - 2;
-  results = RESULTS;
-  resultsii = RESULTSII;
-  resultsiii = RESULTSIII;
-  resultsiv = RESULTSIV;
+  ytd_2019_results = ytd_2019_fund1;
+  ytd_2019_resultsii = ytd_2019_fund2;
+  ytd_2019_resultsiii = ytd_2019_fund3;
+  ytd_2019_resultsiv = ytd_2019_fund4;
+
+  ytd_2020_results = ytd_2020_fund1;
+  ytd_2020_resultsii = ytd_2020_fund2;
+  ytd_2020_resultsiii = ytd_2020_fund3;
+  ytd_2020_resultsiv = ytd_2020_fund4;
+
   displayedColumns = [];
 
   price = [
@@ -52,16 +58,20 @@ export class HomeComponent implements OnInit {
   incDisplay2 = [{displayedColumns: '(%)',value:'inception_fund2'}]
   incDisplay3 = [{displayedColumns: '(%)',value:'inception_fund3'}]
   incDisplay4 = [{displayedColumns: '(%)',value:'inception_fund4'}]
-  retDisplay1 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund1'}]
-  retDisplay2 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund2'}]
-  retDisplay3 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund3'}]
-  retDisplay4 = [{displayedColumns: `YTD ${this.lastyear} (%)`,value:'returns_fund4'}]
+
+  retDisplay1 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund1'}]
+  retDisplay2 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund2'}]
+  retDisplay3 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund3'}]
+  retDisplay4 = [{displayedColumns: `YTD ${this.year} (%)`,value:'returns_fund4'}]
+
   incProvider = [{displayedColumns: 'Fund Name',value:'provider'}]
   serialProvider = [{displayedColumns: 'SN',value:'provider'}]
+
   incPrice1 = [{displayedColumns: 'Opening Price',value:'fund1_price'},{displayedColumns: 'Current Price',value:'fund1'}]
   incPrice2 = [{displayedColumns: 'Opening Price',value:'fund2_price'},{displayedColumns: 'Current Price',value:'fund2'}]
   incPrice3 = [{displayedColumns: 'Opening Price',value:'fund3_price'},{displayedColumns: 'Current Price',value:'fund3'}]
   incPrice4 = [{displayedColumns: 'Opening Price',value:'fund4_price'},{displayedColumns: 'Current Price',value:'fund4'}]
+
   fullYear = [{displayedColumns: 'Opening Price',value:'yend'},{displayedColumns: 'Last Price',value:'latest'}]
   fullDisplay = [{displayedColumns: '(%)', value1: 'yend', value2: 'latest'}]
 
