@@ -41,22 +41,22 @@ export const ytd_2020_fund2: Returns[] = [
   { provider: 'ieianchor', yend: 2.7041,  latest: 3.3864 },
   { provider: 'investmentone', yend: 2.8892,  latest: 3.5849 },
   { provider: 'axamansard',  yend: 3.2453,  latest: 4.0026 },
+  { provider: 'radixpension',  yend: 2.2282,  latest: 2.7235 },
   { provider: 'aptpensions', yend: 3.3055,  latest: 4.0278 },
   { provider: 'trustfund', yend: 3.7078,  latest: 4.4905 },
   { provider: 'oakpensions', yend: 3.0508,  latest: 3.6529 },
-  { provider: 'vgpensions',  yend: 3.1456,  latest: 3.7432 },
-  { provider: 'leadwaypension',  yend: 3.5495,  latest: 4.2057 },
-  { provider: 'npfpensions', yend: 1.7049,  latest: 2.0163 },
-  { provider: 'fidelitypension', yend: 3.2302,  latest: 3.8157 },
+  { provider: 'vgpensions',  yend: 3.1456,  latest: 3.7409 },
+  { provider: 'npfpensions', yend: 1.7049,  latest: 2.025 },
+  { provider: 'leadwaypension',  yend: 3.5495,  latest: 4.2076 },
+  { provider: 'fidelitypension', yend: 3.2302,  latest: 3.8352 },
   { provider: 'firstguarantee',  yend: 3.7681,  latest: 4.4439 },
-  { provider: 'radixpension',  yend: 2.2282,  latest: 2.6164 },
+  { provider: 'aiicopension',  yend: 3.6959,  latest: 4.3363 },
   { provider: 'sigmapensions', yend: 3.4769,  latest: 4.0643 },
-  { provider: 'aiicopension',  yend: 3.6959,  latest: 4.3023 },
   { provider: 'palpensions', yend: 4.0709,  latest: 4.707 },
-  { provider: 'stanbicpension',  yend: 4.2706,  latest: 4.9264 },
+  { provider: 'stanbicpension',  yend: 4.2706,  latest: 4.9218 },
   { provider: 'armpension',  yend: 4.4236,  latest: 5.0406 },
-  { provider: 'fcmbpensions',  yend: 4.1708,  latest: 4.7356 },
-  { provider: 'premiumpension',  yend: 4.7612,  latest: 5.3422 }
+  { provider: 'fcmbpensions',  yend: 4.1708,  latest: 4.7222 },
+  { provider: 'premiumpension',  yend: 4.7612,  latest: 5.3376 }
 
     
 ]
