@@ -16,6 +16,8 @@ export class TableComponent implements OnInit{
 @Input() display1 : any;
 @Input() date : any;
 @Input() serial : any;
+@Input() company : any;
+@Input() stock : any;
 
 @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -32,23 +34,26 @@ displayedColumns = [];
         this.displayedColumns.push(x.displayedColumns);
       })
     }
+
     this.provider.map((x: any)  => {
       this.displayedColumns.push(x.displayedColumns);
     })
+
     if (this.display) {
       this.display.map((x: any) => {
         this.displayedColumns.push(x.displayedColumns)
       })
     }
+
     if (this.display1) {
       this.display1.map((x: any) => {
         this.displayedColumns.push(x.displayedColumns)
       })
     }
+
     this.price.map((x: any) =>{
       this.displayedColumns.push(x.displayedColumns);
-    })
-    
+    })    
     
     if(this.date) {
       this.date.map((x: any) =>{

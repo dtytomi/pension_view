@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { PensionService } from '../_services';
+import { StockService } from '../_services';
 import { ytd_2019_fund1, ytd_2020_fund1 } from '../_models/fundI.ytd';
 import { ytd_2019_fund2, ytd_2020_fund2 } from '../_models/fundII.ytd';
 import { ytd_2019_fund3, ytd_2020_fund3 } from '../_models/fundIII.ytd';
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   
   pensions: any = [];
+  stocks: any = [];
   fund1: any = []; fund2: any = []; fund3: any = []; fund4: any = [];
   inception1: any = [];
   inception2: any = [];
@@ -54,6 +56,16 @@ export class HomeComponent implements OnInit {
 
   provider = [{displayedColumns: 'Provider',value:'provider'}]
 
+
+  stock = [
+    {displayedColumns: 'Closing Price',value:'closing_price'},
+    {displayedColumns: 'Opening Price',value:'opening_price'},
+    {displayedColumns: `YTD ${this.year} (%)`,value:'stock_ytd'}
+  ];
+
+  company = [{displayedColumns: 'Company',value:'company'}]
+  serialCompany = [{displayedColumns: 'SN',value:'company'}]
+
   incDisplay1 = [{displayedColumns: '(%)',value:'inception_fund1'}]
   incDisplay2 = [{displayedColumns: '(%)',value:'inception_fund2'}]
   incDisplay3 = [{displayedColumns: '(%)',value:'inception_fund3'}]
@@ -67,22 +79,43 @@ export class HomeComponent implements OnInit {
   incProvider = [{displayedColumns: 'Fund Name',value:'provider'}]
   serialProvider = [{displayedColumns: 'SN',value:'provider'}]
 
-  incPrice1 = [{displayedColumns: 'Opening Price',value:'fund1_price'},{displayedColumns: 'Current Price',value:'fund1'}]
-  incPrice2 = [{displayedColumns: 'Opening Price',value:'fund2_price'},{displayedColumns: 'Current Price',value:'fund2'}]
-  incPrice3 = [{displayedColumns: 'Opening Price',value:'fund3_price'},{displayedColumns: 'Current Price',value:'fund3'}]
-  incPrice4 = [{displayedColumns: 'Opening Price',value:'fund4_price'},{displayedColumns: 'Current Price',value:'fund4'}]
+  incPrice1 = [
+      {displayedColumns: 'Opening Price',value:'fund1_price'},
+      {displayedColumns: 'Current Price',value:'fund1'}
+    ]
+  incPrice2 = [
+      {displayedColumns: 'Opening Price',value:'fund2_price'},
+      {displayedColumns: 'Current Price',value:'fund2'}
+    ]
+  incPrice3 = [
+      {displayedColumns: 'Opening Price',value:'fund3_price'},
+      {displayedColumns: 'Current Price',value:'fund3'}
+    ]
+  incPrice4 = [
+      {displayedColumns: 'Opening Price',value:'fund4_price'},
+      {displayedColumns: 'Current Price',value:'fund4'}
+    ]
 
-  fullYear = [{displayedColumns: 'Opening Price',value:'yend'},{displayedColumns: 'Last Price',value:'latest'}]
+  fullYear = [
+      {displayedColumns: 'Opening Price',value:'yend'},
+      {displayedColumns: 'Last Price',value:'latest'}
+    ]
   fullDisplay = [{displayedColumns: '(%)', value1: 'yend', value2: 'latest'}]
 
   date = [
-    {displayedColumns: 'Date',value:'fund_date'},]
-    incDate = [
-      {displayedColumns: 'Date',value:'date'},]
+    {displayedColumns: 'Date',value:'fund_date'}]
+  incDate = [
+    {displayedColumns: 'Date',value:'date'}]
+  stockDate = [
+    {displayedColumns: 'Date',value:'trading_date'}]
+
 
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   
-  constructor(private pensionService :PensionService) { }
+  constructor(
+    private pensionService :PensionService,
+    private stockService :StockService
+    ) { }
   
   ngOnInit() {
     
@@ -91,6 +124,7 @@ export class HomeComponent implements OnInit {
     this.getFund2(null);
     this.getFund3(null);
     this.getFund4(null);
+    this.getStocks();
     // this.getInception1();
     // this.getInception2();
     // this.getInception3();
@@ -101,6 +135,10 @@ export class HomeComponent implements OnInit {
      })
 
     this.price.map(x =>{
+     this.displayedColumns.push(x.displayedColumns);
+    })
+
+    this.stock.map(x =>{
      this.displayedColumns.push(x.displayedColumns);
     })
 
@@ -125,6 +163,14 @@ export class HomeComponent implements OnInit {
       .subscribe((data: any) => {
         this.pensions = new MatTableDataSource(data.result)
       });
+  }
+
+  getStocks(): void {
+    this.stockService.getStockYTD()
+      .subscribe((data: any) => {
+        this.stocks = new MatTableDataSource(data.result) 
+        // this.dataSource = this.inception1
+      })
   }
 
   getFund1(date): void {

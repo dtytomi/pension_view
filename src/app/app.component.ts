@@ -11,9 +11,6 @@ export class AppComponent implements OnInit {
   title = 'pension-frontend';
   constructor(private window: Window, public dialog: MatDialog){}
   ngOnInit(){
-  //   if(this.window.innerHeight > this.window.innerWidth){
-  //    this.dialog.open(OrientationComponent)
-  // }
 
   }
 }

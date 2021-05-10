@@ -1,14 +1,18 @@
 <section class="section">
   <div class="container">
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Click the date icon</mat-label>
-        <input matInput [matDatepicker]="dp3"  [ngModel]="date_value" (ngModelChange)="modelChangeFn($event)"
-          disabled>
-        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-      </mat-form-field>
-      </p> 
+    <div class="is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+      <div class="is-align-self-flex-start">
+        <mat-form-field appearance="fill">
+          <mat-label>Go back in time</mat-label>
+          <input matInput [matDatepicker]="dp3"  [ngModel]="date_value" (ngModelChange)="modelChangeFn($event)"
+            disabled>
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <!-- <div class="is-align-self-flex-end" style="float: right;"><i class="fas fa-phone-alt"></i>  08026127355</div> -->
+    </div> 
+    <br />
     <br />
     <mat-tab-group dynamicHeight mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
       <mat-tab label="Fund I">
@@ -179,6 +183,25 @@
                   <div class="board-item scroll">
                     <app-table [dataSource]="ytd_2019_resultsiv" [serial]="serialProvider" [provider]="incProvider" [price]="fullYear" [display1]="fullDisplay"></app-table>
                   </div> 
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Stock Price List">
+        <div class="example-large-box">
+          <div class="columns is-centered is-multiline" id="sectioncontainer">
+            <div class="column">
+              <article class="message">
+                <div class="message-header">
+                  <!-- Make a header using the `name` property from the current season in the loop -->
+                  <p>Stocks</p>
+                </div>
+                <div class="message-body">
+                  <div class="board-item scroll">
+                    <app-table [dataSource]="stocks" [serial]="serialCompany" [provider]="company" [price]="stock" [date]="stockDate"></app-table>
+                  </div>
                 </div>
               </article>
             </div>

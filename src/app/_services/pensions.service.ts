@@ -19,7 +19,7 @@ const httpOptions = {
 
 export class PensionService {
 
-  pensions: Pension[] = [];
+  pension: Pension[] = [];
 
   constructor(
     private http: HttpClient,
