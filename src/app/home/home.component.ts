@@ -3,8 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { PensionService } from '../_services';
-import { StockService } from '../_services';
+import { PensionService, StockService, RateService } from '../_services';
 import { ytd_2019_fund1, ytd_2020_fund1 } from '../_models/fundI.ytd';
 import { ytd_2019_fund2, ytd_2020_fund2 } from '../_models/fundII.ytd';
 import { ytd_2019_fund3, ytd_2020_fund3 } from '../_models/fundIII.ytd';
@@ -22,6 +21,7 @@ export class HomeComponent implements OnInit {
 
   
   pensions: any = [];
+  rates: any = [];
   stocks: any = [];
   fund1: any = []; fund2: any = []; fund3: any = []; fund4: any = [];
   inception1: any = [];
@@ -56,6 +56,13 @@ export class HomeComponent implements OnInit {
 
   provider = [{displayedColumns: 'Provider',value:'provider'}]
 
+  rate = [
+    {displayedColumns: 'Selling ₦',value:'selling'},
+    {displayedColumns: 'Buying ₦',value:'buying'}
+  ];
+
+  currency = [{displayedColumns: 'Currency',value:'currency'},]
+  serialCurrency = [{displayedColumns: 'SN',value:'currency'}]
 
   stock = [
     {displayedColumns: 'Closing Price',value:'closing_price'},
@@ -97,9 +104,10 @@ export class HomeComponent implements OnInit {
     ]
 
   fullYear = [
-      {displayedColumns: 'Opening Price',value:'yend'},
-      {displayedColumns: 'Last Price',value:'latest'}
-    ]
+    {displayedColumns: 'Opening Price',value:'yend'},
+    {displayedColumns: 'Last Price',value:'latest'}
+  ]
+    
   fullDisplay = [{displayedColumns: '(%)', value1: 'yend', value2: 'latest'}]
 
   date = [
@@ -108,30 +116,34 @@ export class HomeComponent implements OnInit {
     {displayedColumns: 'Date',value:'date'}]
   stockDate = [
     {displayedColumns: 'Date',value:'trading_date'}]
+  rateDate = [
+    {displayedColumns: 'Date',value:'rate_date'}]
 
 
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   
   constructor(
     private pensionService :PensionService,
-    private stockService :StockService
+    private stockService :StockService,
+    private rateService :RateService
     ) { }
   
   ngOnInit() {
     
-    this.getPensions(null);
+    
     this.getFund1(null);
     this.getFund2(null);
     this.getFund3(null);
     this.getFund4(null);
     this.getStocks();
+    this.getRates();
+    this.getPensions(null);
     // this.getInception1();
     // this.getInception2();
     // this.getInception3();
     // this.getInception4();
     this.provider.map(x =>{
       this.displayedColumns.push(x.displayedColumns);
-      // console.log(this.displayedColumns) 
      })
 
     this.price.map(x =>{
@@ -169,7 +181,13 @@ export class HomeComponent implements OnInit {
     this.stockService.getStockYTD()
       .subscribe((data: any) => {
         this.stocks = new MatTableDataSource(data.result) 
-        // this.dataSource = this.inception1
+      })
+  }
+
+  getRates(): void {
+    this.rateService.getRates()
+      .subscribe((data: any) => {
+        this.rates = new MatTableDataSource(data.result) 
       })
   }
 
