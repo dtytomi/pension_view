@@ -58,7 +58,9 @@ export class HomeComponent implements OnInit {
 
   rate = [
     {displayedColumns: 'Selling ₦',value:'selling'},
-    {displayedColumns: 'Buying ₦',value:'buying'}
+    {displayedColumns: 'Buying ₦',value:'buying'},
+    {displayedColumns: 'Opening Price',value:'opening_price'},
+    {displayedColumns: `YTD ${this.year} (%)`,value:'rate_ytd'}
   ];
 
   currency = [{displayedColumns: 'Currency',value:'currency'},]

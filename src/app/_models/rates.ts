@@ -4,5 +4,7 @@ export class Rate {
   selling: string;
   buying: string;
   currency: string;
+  opening_price: string;
+  rate_ytd: string;
   sn: number;
 }
