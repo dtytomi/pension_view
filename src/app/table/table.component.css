@@ -7,9 +7,14 @@ table {
   font-weight: bold;
   /* padding-left: 5px; */
   padding-right: 10px;
-  padding-top: 0px;
+  padding-top: 1px;
 }
 
+.example-element-row {
+  width: 18%;
+  padding-right: 20px;
+  /*text-align: center;*/
+}
  
 @media only screen and (max-width: 600px) {
 

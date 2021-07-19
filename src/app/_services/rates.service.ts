@@ -21,6 +21,10 @@ export class RateService {
     return this.http.get<any>(`${this.apiUrl}rates/`);
   }
 
+  getBDCRates() {
+    return this.http.get<any>(`${this.apiUrl}rates/bdc`);
+  }
+
   /** 
   * 
   * Handle  Http operation that failed

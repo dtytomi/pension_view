@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   
   pensions: any = [];
   rates: any = [];
+  bdcRates: any = [];
   stocks: any = [];
   fund1: any = []; fund2: any = []; fund3: any = []; fund4: any = [];
   inception1: any = [];
@@ -61,6 +62,11 @@ export class HomeComponent implements OnInit {
     {displayedColumns: 'Buying ₦',value:'buying'},
     {displayedColumns: 'Opening Price',value:'opening_price'},
     {displayedColumns: `YTD ${this.year} (%)`,value:'rate_ytd'}
+  ];
+
+  bdcRate = [
+    {displayedColumns: 'Selling ₦',value:'selling'},
+    {displayedColumns: 'Buying ₦',value:'buying'}
   ];
 
   currency = [{displayedColumns: 'Currency',value:'currency'},]
@@ -139,6 +145,7 @@ export class HomeComponent implements OnInit {
     this.getFund4(null);
     this.getStocks();
     this.getRates();
+    this.getBDCRates();
     this.getPensions(null);
     // this.getInception1();
     // this.getInception2();
@@ -190,6 +197,13 @@ export class HomeComponent implements OnInit {
     this.rateService.getRates()
       .subscribe((data: any) => {
         this.rates = new MatTableDataSource(data.result) 
+      })
+  }
+
+  getBDCRates(): void {
+    this.rateService.getBDCRates()
+      .subscribe((data: any) => {
+        this.bdcRates = new MatTableDataSource(data.result) 
       })
   }
 
